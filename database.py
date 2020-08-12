@@ -12,7 +12,8 @@ def create_db():
         open(data_name, "w")
     conn = connection()
     if conn is not None:
-        create_link(conn)
+        create_site(conn)
+        create_ad(conn)
 
 
 def connection():
@@ -26,12 +27,34 @@ def connection():
     return conn
 
 
-def create_link(co):
+def create_site(co):
     data = co.cursor()
-    create = """CREATE TABLE IF NOT EXISTS link (
+    create = """CREATE TABLE IF NOT EXISTS site (
+            id      INTEGER         PRIMARY KEY     AUTOINCREMENT,
+            web     VARCHAR(255)    NOT NULL,
+            subject VARCHAR(255)    NOT NULL,
+            link    VARCHAR(255)    NOT NULL        UNIQUE
+        )"""
+    data.execute(create)
+
+
+def create_ad(co):
+    data = co.cursor()
+    create = """CREATE TABLE IF NOT EXISTS ad (
             id      INTEGER         PRIMARY KEY     AUTOINCREMENT,
             title   VARCHAR(255)    NOT NULL,
             text    VARCHAR(255)    NOT NULL,
             link    VARCHAR(255)    NOT NULL        UNIQUE
         )"""
     data.execute(create)
+
+
+def select(sql):
+    try:
+        conn = connection()
+        c = conn.cursor()
+        c.execute(sql)
+        result = c.fetchall()
+        return result
+    except Error as e:
+        print(e)
