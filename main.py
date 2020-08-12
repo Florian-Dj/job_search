@@ -2,9 +2,8 @@
 
 import time
 import database
-import site
+import search
 import run
-from sys import exit
 
 
 def main():
@@ -19,7 +18,7 @@ def main():
     elif choose == "1":
         run.home()
     elif choose == "2":
-        site.home()
+        search.home()
     elif choose == "3":
         print("Annonces")
     else:
