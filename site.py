@@ -16,7 +16,7 @@ def home():
     try:
         choose = int(choose)
         if choose == 0:
-            main.home()
+            main.main()
         elif choose == 1:
             add_link()
         elif choose == 2:
@@ -35,7 +35,7 @@ def add_link():
     1 - Pole-Emploi
     2 - Linkedin
     3 - Leboncoin
-    0 - Retour""")
+    0 - Retour\n""")
     web = input("De quel site provient la recherche ? ")
     if web == "1":
         web = "Pole-Emploi"
@@ -44,7 +44,6 @@ def add_link():
     elif web == "3":
         web = "Leboncoin"
     else:
-        print("Ici")
         home()
     subject = input("Quel est le titre de la recherche ? ")
     conn = database.connection()
@@ -63,12 +62,18 @@ def add_link():
 def delete_link():
     sql = """SELECT * FROM site"""
     results = database.select(sql)
+    print()
     for result in results:
-        print(result)
-    print("0 - Retour")
-    choose = input("Quel cherche voulez-vous supprimer ? ")
-    if choose == "0":
+        print("{} - {}  {}".format(result[0], result[1], result[2]))
+    print("0 - Retour\n")
+    choose = int(input("Quel cherche voulez-vous supprimer ? "))
+    if choose == 0:
         home()
+    if 1 <= choose <= len(results):
+        print(results[choose-1])
+    time.sleep(2)
+    home()
+
 
 def list_link():
     sql = """SELECT * FROM site"""
