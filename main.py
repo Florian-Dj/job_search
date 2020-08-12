@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import time
+import database
 
 
 def main():
@@ -27,8 +28,9 @@ def main():
         main()
 
 
-def list_link():
+# def list_link():
 
 
 if __name__ == '__main__':
+    database.create_db()
     main()
