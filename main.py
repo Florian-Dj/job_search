@@ -3,6 +3,7 @@
 import time
 import database
 import site
+import run
 from sys import exit
 
 
@@ -16,7 +17,7 @@ def main():
     if choose == "0":
         exit()
     elif choose == "1":
-        print("Run")
+        run.home()
     elif choose == "2":
         site.home()
     elif choose == "3":
