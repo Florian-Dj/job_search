@@ -1,4 +1,4 @@
-# Recherche d'emploi (*Boursorama*)
+# Recherche d'emploi
 Exécutable permettant de savoir les dernières offres d'emplois sur vos sites.
 
 ## Exigence

@@ -28,10 +28,10 @@ def connection():
 
 def create_link(co):
     data = co.cursor()
-    create = """CREATE TABLE IF NOT EXISTS my_list (
+    create = """CREATE TABLE IF NOT EXISTS link (
             id      INTEGER         PRIMARY KEY     AUTOINCREMENT,
-            title   VARCHAR(255)    NOT NULL        UNIQUE,
-            text    VARCHAR(255)    NOT NULL        UNIQUE,
+            title   VARCHAR(255)    NOT NULL,
+            text    VARCHAR(255)    NOT NULL,
             link    VARCHAR(255)    NOT NULL        UNIQUE
         )"""
     data.execute(create)
