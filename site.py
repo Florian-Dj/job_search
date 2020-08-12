@@ -7,9 +7,9 @@ import database
 
 def home():
     print("""
-    1 - Ajouter Lien
-    2 - Supprimer Lien
-    3 - Liste Lien
+    1 - Ajouter Recherche
+    2 - Supprimer Recherche
+    3 - Liste Recherche
     0 - Retour
     """)
     choose = input("Votre action : ")
@@ -60,17 +60,29 @@ def add_link():
 
 
 def delete_link():
+    conn = None
     sql = """SELECT * FROM site"""
     results = database.select(sql)
     print()
+    i = 1
     for result in results:
-        print("{} - {}  {}".format(result[0], result[1], result[2]))
+        print("{} - {}  {}".format(i, result[1], result[2]))
+        i += 1
     print("0 - Retour\n")
     choose = int(input("Quel cherche voulez-vous supprimer ? "))
     if choose == 0:
         home()
     if 1 <= choose <= len(results):
-        print(results[choose-1])
+        print("{}  {} Supprimé".format(results[choose-1][2], results[choose-1][1]))
+        conn = database.connection()
+        sql = """DELETE FROM site WHERE id={}""".format(results[choose-1][0])
+    try:
+        data = conn.cursor()
+        data.execute(sql)
+        conn.commit()
+        conn.close()
+    except conn.Error as e:
+        print(e)
     time.sleep(2)
     home()
 

@@ -3,12 +3,13 @@
 import time
 import database
 import site
+from sys import exit
 
 
 def main():
     print("""
     1 - Run
-    2 - Site
+    2 - Sites
     3 - Annonces
     0 - Quitter""")
     choose = input("\nVotre action : ")
