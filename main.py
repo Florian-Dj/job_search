@@ -5,6 +5,7 @@ import database
 import search
 import run
 import ad
+from sys import exit
 
 
 def main():

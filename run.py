@@ -6,17 +6,21 @@ import requests
 from bs4 import BeautifulSoup
 import playsound
 import datetime
+import configparser
+
+config = configparser.ConfigParser()
 
 
 def home():
     while True:
+        config.read("config.ini")
         sql = """SELECT * FROM search"""
         results = database.select(sql)
         datetime_now = datetime.datetime.now().strftime("%H:%M:%S")
-        print("\n---------- {} ----------\n".format(datetime_now))
+        print("\n======== {} ========\n".format(datetime_now))
         for result in results:
             parse(result)
-        time.sleep(300)
+        time.sleep(int(config["DEFAULT"]["cooldown_scraping"]))
 
 
 def parse(result):
@@ -42,7 +46,7 @@ def ep(result):
         description = ad.find('p', class_="description").text
         sql = """INSERT INTO ad (site_id, title, description, location, link) VALUES ({}, "{}", "{}", "{}", "{}")"""\
             .format(result[0], title, description, location, link)
-        injection_sql(conn, sql, link, title, location, description)
+        injection_sql(conn, sql, link, title, location, description, result)
     close(conn)
 
 
@@ -57,17 +61,19 @@ def lk(result):
         location = ad.find('span', class_="job-result-card__location").text
         sql = """INSERT INTO ad (site_id, title, location, link) VALUES ({}, "{}", "{}", "{}")"""\
             .format(result[0], title, location, link)
-        injection_sql(conn, sql, link, title, location, None)
+        injection_sql(conn, sql, link, title, location, None, result)
     close(conn)
 
 
-def injection_sql(conn, sql, link, title, location, description):
+def injection_sql(conn, sql, link, title, location, description, result):
     try:
         data = conn.cursor()
         data.execute(sql)
         playsound.playsound("sound/alert.mp3", False)
-        print("\nLien : {}\nTitre : {}\nLieu : {}\nDescription : {}\n".format(link, title, location, description))
-        time.sleep(4)
+        print("\n----- {} / {} -----".format(result[1], result[2]))
+        print("Lien : {}\nTitre : {}\nLieu : {}\nDescription : {}".format(link, title, location, description))
+        print("----------------------------")
+        time.sleep(int(config["DEFAULT"]["cooldown_ad"]))
     except conn.IntegrityError:
         pass
     except conn.Error as e:

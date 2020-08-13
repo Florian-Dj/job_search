@@ -36,7 +36,7 @@ def add_link():
     1 - Pole-Emploi
     2 - Linkedin
     3 - Leboncoin
-    4 - 
+    4 - Monster
     0 - Retour\n""")
     web = input("De quel site provient la recherche ? ")
     if web == "1":
@@ -61,7 +61,6 @@ def add_link():
         conn.close()
     except conn.Error as e:
         print(e)
-    time.sleep(3)
     home()
 
 
