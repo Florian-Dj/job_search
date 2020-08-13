@@ -16,7 +16,7 @@ def home():
         print("\n---------- {} ----------\n".format(datetime_now))
         for result in results:
             parse(result)
-        time.sleep(10)
+        time.sleep(300)
 
 
 def parse(result):

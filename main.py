@@ -4,6 +4,7 @@ import time
 import database
 import search
 import run
+import ad
 
 
 def main():
@@ -20,7 +21,7 @@ def main():
     elif choose == "2":
         search.home()
     elif choose == "3":
-        print("Annonces")
+        ad.home()
     else:
         print("\nMerci de rentrer un choix valide !")
         time.sleep(2)
