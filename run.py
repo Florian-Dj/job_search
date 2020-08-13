@@ -65,9 +65,9 @@ def injection_sql(conn, sql, link, title, location, description):
     try:
         data = conn.cursor()
         data.execute(sql)
-        playsound.playsound("alert.mp3", False)
+        playsound.playsound("sound/alert.mp3", False)
         print("\nLien : {}\nTitre : {}\nLieu : {}\nDescription : {}\n".format(link, title, location, description))
-        time.sleep(3)
+        time.sleep(4)
     except conn.IntegrityError:
         pass
     except conn.Error as e:
