@@ -30,5 +30,5 @@ def main():
 if __name__ == '__main__':
     database.create_db()
     print("Recherche d'emplois Scrape")
-    print("By Florian DJERBI\tV0.1")
+    print("By Mucral\tV0.1")
     main()

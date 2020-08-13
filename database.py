@@ -45,8 +45,8 @@ def create_ad(co):
             id          INTEGER         PRIMARY KEY     AUTOINCREMENT,
             site_id     INTEGER,
             title       VARCHAR(255)    NOT NULL,
-            text        VARCHAR(255)    NOT NULL,
-            description TEXT            NOT NULL,
+            description VARCHAR(255)    NOT NULL,
+            location    VARCHAR(255)    NOT NULL,
             link        VARCHAR(255)    NOT NULL        UNIQUE,
             
             CONSTRAINT fk_site_id FOREIGN KEY (site_id) REFERENCES search(id) ON DELETE CASCADE
