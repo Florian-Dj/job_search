@@ -36,6 +36,7 @@ def add_link():
     1 - Pole-Emploi
     2 - Linkedin
     3 - Leboncoin
+    4 - 
     0 - Retour\n""")
     web = input("De quel site provient la recherche ? ")
     if web == "1":
@@ -45,6 +46,8 @@ def add_link():
         web = "Linkedin"
     elif web == "3":
         web = "Leboncoin"
+    elif web == "3":
+        web = "Monster"
     else:
         home()
     subject = input("Quel est le titre de la recherche ? ")
