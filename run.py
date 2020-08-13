@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 
 
 def home():
-    sql = """SELECT * FROM site GROUP BY web"""
+    sql = """SELECT * FROM search GROUP BY web"""
     results = database.select(sql)
     for result in results:
         parse(result)

@@ -30,6 +30,7 @@ def home():
 
 
 def add_link():
+    link_ad = ""
     link = input("URL de la recherche : ")
     print("""
     1 - Pole-Emploi
@@ -39,6 +40,7 @@ def add_link():
     web = input("De quel site provient la recherche ? ")
     if web == "1":
         web = "Pole-Emploi"
+        link_ad = "https://candidat.pole-emploi.fr"
     elif web == "2":
         web = "Linkedin"
     elif web == "3":
@@ -47,7 +49,8 @@ def add_link():
         home()
     subject = input("Quel est le titre de la recherche ? ")
     conn = database.connection()
-    sql = """INSERT INTO site (web, subject, link) VALUES ('{}', '{}', '{}')""".format(web, subject, link)
+    sql = """INSERT INTO search (web, subject, link_search, link_ad) VALUES ('{}', '{}', '{}', '{}')"""\
+        .format(web, subject, link, link_ad)
     try:
         data = conn.cursor()
         data.execute(sql)
@@ -61,7 +64,7 @@ def add_link():
 
 def delete_link():
     conn = None
-    sql = """SELECT * FROM site"""
+    sql = """SELECT * FROM search"""
     results = database.select(sql)
     print()
     i = 1
@@ -75,7 +78,7 @@ def delete_link():
     if 1 <= choose <= len(results):
         print("{}  {} Supprimé".format(results[choose-1][2], results[choose-1][1]))
         conn = database.connection()
-        sql = """DELETE FROM site WHERE id={}""".format(results[choose-1][0])
+        sql = """DELETE FROM search WHERE id={}""".format(results[choose-1][0])
     try:
         data = conn.cursor()
         data.execute(sql)
@@ -88,7 +91,7 @@ def delete_link():
 
 
 def list_link():
-    sql = """SELECT * FROM site"""
+    sql = """SELECT * FROM search"""
     results = database.select(sql)
     for result in results:
         print()

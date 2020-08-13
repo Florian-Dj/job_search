@@ -49,7 +49,7 @@ def create_ad(co):
             description TEXT            NOT NULL,
             link        VARCHAR(255)    NOT NULL        UNIQUE,
             
-            CONSTRAINT fk_site_id FOREIGN KEY (site_id) REFERENCES site(id) ON DELETE CASCADE
+            CONSTRAINT fk_site_id FOREIGN KEY (site_id) REFERENCES search(id) ON DELETE CASCADE
         )"""
     data.execute(create)
 
