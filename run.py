@@ -1,19 +1,22 @@
 # -*- coding: utf-8 -*-
 
 import time
-import main
 import database
 import requests
 from bs4 import BeautifulSoup
+import playsound
+import datetime
 
 
 def home():
-    sql = """SELECT * FROM search GROUP BY web"""
-    results = database.select(sql)
-    for result in results:
-        parse(result)
-    time.sleep(2)
-    main.main()
+    while True:
+        sql = """SELECT * FROM search"""
+        results = database.select(sql)
+        datetime_now = datetime.datetime.now().strftime("%H:%M:%S")
+        print("\n---------- {} ----------\n".format(datetime_now))
+        for result in results:
+            parse(result)
+        time.sleep(10)
 
 
 def parse(result):
@@ -31,6 +34,9 @@ def parse(result):
         try:
             data = conn.cursor()
             data.execute(sql)
+            playsound.playsound("alert.mp3", False)
+            print("\nLien : {}\nTitre : {}\nLieu : {}\nDescription : {}\n".format(link, title, location, description))
+            time.sleep(3)
         except conn.IntegrityError:
             pass
         except conn.Error as e:
