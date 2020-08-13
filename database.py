@@ -45,7 +45,7 @@ def create_ad(co):
             id          INTEGER         PRIMARY KEY     AUTOINCREMENT,
             site_id     INTEGER,
             title       VARCHAR(255)    NOT NULL,
-            description VARCHAR(255)    NOT NULL,
+            description VARCHAR(255)    NULL,
             location    VARCHAR(255)    NOT NULL,
             link        VARCHAR(255)    NOT NULL        UNIQUE,
             

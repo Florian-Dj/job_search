@@ -20,6 +20,17 @@ def home():
 
 
 def parse(result):
+    if result[1] == "Pole-Emploi":
+        ep(result)
+    elif result[1] == "Linkedin":
+        lk(result)
+    elif result[1] == "Leboncoin":
+        lb(result)
+    else:
+        print("Error")
+
+
+def ep(result):
     req = requests.get(result[3])
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="result")
@@ -31,16 +42,39 @@ def parse(result):
         description = ad.find('p', class_="description").text
         sql = """INSERT INTO ad (site_id, title, description, location, link) VALUES ({}, "{}", "{}", "{}", "{}")"""\
             .format(result[0], title, description, location, link)
-        try:
-            data = conn.cursor()
-            data.execute(sql)
-            playsound.playsound("alert.mp3", False)
-            print("\nLien : {}\nTitre : {}\nLieu : {}\nDescription : {}\n".format(link, title, location, description))
-            time.sleep(3)
-        except conn.IntegrityError:
-            pass
-        except conn.Error as e:
-            print(e)
+        injection_sql(conn, sql, link, title, location, description)
+    close(conn)
+
+
+def lk(result):
+    req = requests.get(result[3])
+    soup = BeautifulSoup(req.content, "html.parser")
+    ads = soup.find_all('li', class_="result-card")
+    conn = database.connection()
+    for ad in ads:
+        link = ad.a['href']
+        title = ad.h3.text
+        location = ad.find('span', class_="job-result-card__location").text
+        sql = """INSERT INTO ad (site_id, title, location, link) VALUES ({}, "{}", "{}", "{}")"""\
+            .format(result[0], title, location, link)
+        injection_sql(conn, sql, link, title, location, None)
+    close(conn)
+
+
+def injection_sql(conn, sql, link, title, location, description):
+    try:
+        data = conn.cursor()
+        data.execute(sql)
+        playsound.playsound("alert.mp3", False)
+        print("\nLien : {}\nTitre : {}\nLieu : {}\nDescription : {}\n".format(link, title, location, description))
+        time.sleep(3)
+    except conn.IntegrityError:
+        pass
+    except conn.Error as e:
+        print(e)
+
+
+def close(conn):
     try:
         conn.commit()
         conn.close()
