@@ -16,13 +16,13 @@ def home():
         print("\n---------- {} ----------\n".format(datetime_now))
         for result in results:
             parse(result)
-        time.sleep(10)
+        time.sleep(300)
 
 
 def parse(result):
-    """if result[1] == "Pole-Emploi":
-        ep(result)"""
-    if result[1] == "Linkedin":
+    if result[1] == "Pole-Emploi":
+        ep(result)
+    elif result[1] == "Linkedin":
         lk(result)
     elif result[1] == "Leboncoin":
         lb(result)
@@ -55,10 +55,9 @@ def lk(result):
         link = ad.a['href'].split("?")[0]
         title = ad.h3.text
         location = ad.find('span', class_="job-result-card__location").text
-        print(link)
         sql = """INSERT INTO ad (site_id, title, location, link) VALUES ({}, "{}", "{}", "{}")"""\
             .format(result[0], title, location, link)
-        # injection_sql(conn, sql, link, title, location, None)
+        injection_sql(conn, sql, link, title, location, None)
     close(conn)
 
 
