@@ -46,7 +46,8 @@ def add_link():
         web = "Linkedin"
     elif web == "3":
         web = "Leboncoin"
-    elif web == "3":
+        link_ad = "https://www.leboncoin.fr"
+    elif web == "4":
         web = "Monster"
     else:
         home()

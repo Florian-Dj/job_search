@@ -30,6 +30,8 @@ def parse(result):
         lk(result)
     elif result[1] == "Leboncoin":
         lb(result)
+    elif result[1] == "Monster":
+        mt(result)
     else:
         print("Error")
 
@@ -59,6 +61,22 @@ def lk(result):
         link = ad.a['href'].split("?")[0]
         title = ad.h3.text
         location = ad.find('span', class_="job-result-card__location").text
+        sql = """INSERT INTO ad (site_id, title, location, link) VALUES ({}, "{}", "{}", "{}")"""\
+            .format(result[0], title, location, link)
+        injection_sql(conn, sql, link, title, location, None, result)
+    close(conn)
+
+
+def lb(result):
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+    req = requests.get(result[3], headers=headers)
+    soup = BeautifulSoup(req.content, "html.parser")
+    ads = soup.find_all('li', class_="_3DFQ-")
+    conn = database.connection()
+    for ad in ads:
+        link = "{}{}".format(result[4], ad.a['href'])
+        title = ad.find("p", class_="_2tubl").text
+        location = ad.find('p', class_="_2qeuk").text
         sql = """INSERT INTO ad (site_id, title, location, link) VALUES ({}, "{}", "{}", "{}")"""\
             .format(result[0], title, location, link)
         injection_sql(conn, sql, link, title, location, None, result)
