@@ -10,7 +10,6 @@ def home():
     1 - Pôle-Emploi
     2 - Linkedin
     3 - Leboncoin
-    4 - Monster
     0 - Retour
     """)
     choose = input("Votre action : ")
@@ -24,8 +23,6 @@ def home():
             list_ad("Linkedin")
         elif choose == 3:
             list_ad("Leboncoin")
-        elif choose == 4:
-            list_ad("Monster")
     except ValueError:
         print("Merci de rentrer une donné valide !")
         time.sleep(2)

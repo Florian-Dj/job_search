@@ -30,8 +30,6 @@ def parse(result):
         lk(result)
     elif result[1] == "Leboncoin":
         lb(result)
-    elif result[1] == "Monster":
-        mt(result)
     else:
         print("Error")
 
