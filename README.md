@@ -8,12 +8,11 @@ Exécutable permettant de savoir les dernières offres d'emplois sur vos sites.
 ## Utilisation
 
 ## Mise à jour
-**V0.1 _(dev)_**
+**V0.1**
 - Ajouter des recherches
-- Analyse des offres sur Pôle Emploi, Linkedin
+- Analyse des offres sur Pôle Emploi, Linkedin et Leboncoin
 - Alertes son d'une nouvelle annonce
 - Fichier option pour les temps de recharge
 
 ## Idées
-- Analyse des offres sur Leboncoin et Monster
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*

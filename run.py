@@ -89,7 +89,7 @@ def injection_sql(conn, sql, link, title, location, description, result):
         print("\n----- {} / {} -----".format(result[1], result[2]))
         print("Lien : {}\nTitre : {}\nLieu : {}\nDescription : {}".format(link, title, location, description))
         print("----------------------------")
-        time.sleep(int(config["DEFAULT"]["cooldown_ad"]))
+        time.sleep(int(config["DEFAULT"]["cooldown_new_ad"]))
     except conn.IntegrityError:
         pass
     except conn.Error as e:
