@@ -9,12 +9,19 @@ config = configparser.ConfigParser()
 
 
 def home():
-    print("""
-    1 - Pôle-Emploi
-    2 - Linkedin
-    3 - Leboncoin
+    sql = """SELECT web, COUNT(site_id) FROM ad 
+            LEFT JOIN search ON ad.site_id = search.id
+            GROUP BY web"""
+    results = database.select(sql)
+    web = {"Leboncoin": 0, "Linkedin": 0, "Pole-Emploi": 0}
+    for result in results:
+        web[result[0]] = result[1]
+    print("""    
+    1 - Pôle-Emploi\t\t({})
+    2 - Linkedin\t\t({})
+    3 - Leboncoin\t\t({})
     0 - Retour
-    """)
+    """.format(web["Pole-Emploi"], web["Linkedin"], web["Leboncoin"]))
     choose = input("Votre action : ")
     try:
         choose = int(choose)
