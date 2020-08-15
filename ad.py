@@ -21,9 +21,9 @@ def home():
     print("""
     Total Annonces : \t({})
     
-    1 - Pôle-Emploi\t\t({})
-    2 - Linkedin\t\t({})
-    3 - Leboncoin\t\t({})
+    1 - Pôle-Emploi\t({})
+    2 - Linkedin\t({})
+    3 - Leboncoin\t({})
     0 - Retour
     """.format(total[0], web["Pole-Emploi"], web["Linkedin"], web["Leboncoin"]))
     choose = input("Votre action : ")
