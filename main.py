@@ -34,3 +34,4 @@ if __name__ == '__main__':
     print("Recherche d'emplois Scrape")
     print("By Mucral\tV0.1")
     main()
+    # pyinstaller --onefile --icon=logo.ico main.py     Command Pyinstaller
