@@ -40,12 +40,15 @@ def home():
 
 
 def list_search(web):
-    sql = """SELECT * FROM search WHERE web='{}'""".format(web)
+    sql = """SELECT search.*, COUNT(ad.site_id) FROM ad
+            LEFT JOIN search ON ad.site_id = search.id
+            WHERE web='{}'
+            GROUP BY search.id""".format(web)
     results = database.select(sql)
     i = 1
     print()
     for result in results:
-        print("{} - {}".format(i, result[2]))
+        print("{} - {}\t\t({})".format(i, result[2], result[5]))
         i += 1
     print("0 - Retour\n")
     choose = input("Votre action : ")
