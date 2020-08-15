@@ -43,7 +43,7 @@ def ep(result):
         link = "{}{}".format(result[4], ad.a['href'])
         title = ad.h2.text.replace("\n", "")
         location = ad.find('p', class_="subtext").text.replace("\n", "")
-        description = ad.find('p', class_="description").text
+        description = ad.find('p', class_="description").text.replace('"', "")
         sql = """INSERT INTO ad (site_id, title, description, location, link) VALUES ({}, "{}", "{}", "{}", "{}")"""\
             .format(result[0], title, description, location, link)
         injection_sql(conn, sql, link, title, location, description, result)
@@ -93,6 +93,7 @@ def injection_sql(conn, sql, link, title, location, description, result):
     except conn.IntegrityError:
         pass
     except conn.Error as e:
+        print(sql)
         print(e)
 
 
