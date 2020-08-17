@@ -52,7 +52,8 @@ def list_search(web):
     i = 1
     print()
     for result in results:
-        print("{} - {}\t\t({})".format(i, result[2], result[5]))
+        space = 35 - len(result[2])
+        print("{} - {} {} ({})".format(i, result[2], " "*space, result[5]))
         i += 1
     print("0 - Retour\n")
     choose = input("Votre action : ")
