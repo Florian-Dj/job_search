@@ -91,12 +91,15 @@ def delete_link():
 
 
 def list_link():
-    sql = """SELECT * FROM search"""
+    sql = """SELECT * FROM search ORDER BY web"""
     results = database.select(sql)
+    web = ""
     for result in results:
-        print()
-        print("Site : {}".format(result[1]))
+        if result[1] != web:
+            web = result[1]
+            print("\n---------- {} ----------\n".format(web))
         print("Poste : {}".format(result[2]))
         print("Lien : {}".format(result[3]))
+        print()
     time.sleep(2)
     home()
