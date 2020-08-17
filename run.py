@@ -9,6 +9,7 @@ import datetime
 import configparser
 
 config = configparser.ConfigParser()
+web = ""
 
 
 def home():
@@ -46,7 +47,7 @@ def ep(result):
         description = ad.find('p', class_="description").text.replace('"', "")
         sql = """INSERT INTO ad (site_id, title, description, location, link) VALUES ({}, "{}", "{}", "{}", "{}")"""\
             .format(result[0], title, description, location, link)
-        injection_sql(conn, sql, link, title, location, description, result)
+        injection_sql(conn, sql, link, title, result)
     close(conn)
 
 
@@ -61,7 +62,7 @@ def lk(result):
         location = ad.find('span', class_="job-result-card__location").text
         sql = """INSERT INTO ad (site_id, title, location, link) VALUES ({}, "{}", "{}", "{}")"""\
             .format(result[0], title, location, link)
-        injection_sql(conn, sql, link, title, location, None, result)
+        injection_sql(conn, sql, link, title, result)
     close(conn)
 
 
@@ -77,18 +78,21 @@ def lb(result):
         location = ad.find('p', class_="_2qeuk").text
         sql = """INSERT INTO ad (site_id, title, location, link) VALUES ({}, "{}", "{}", "{}")"""\
             .format(result[0], title, location, link)
-        injection_sql(conn, sql, link, title, location, None, result)
+        injection_sql(conn, sql, link, title, result)
     close(conn)
 
 
-def injection_sql(conn, sql, link, title, location, description, result):
+def injection_sql(conn, sql, link, title, result):
     try:
         data = conn.cursor()
         data.execute(sql)
         playsound.playsound("sound/alert.mp3", False)
-        print("\n----- {} / {} -----".format(result[1], result[2]))
-        print("Lien : {}\nTitre : {}\nLieu : {}\nDescription : {}".format(link, title, location, description))
-        print("----------------------------")
+        global web
+        if "{} / {}".format(result[1], result[2]) != web:
+            web = "{} / {}".format(result[1], result[2])
+            print("\n----- {} -----\n".format(web))
+        print("Lien : {}\nTitre : {}".format(link, title))
+        print()
         time.sleep(int(config["DEFAULT"]["cooldown_new_ad"]))
     except conn.IntegrityError:
         pass
