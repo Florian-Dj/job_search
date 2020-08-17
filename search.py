@@ -63,19 +63,41 @@ def add_link():
 
 
 def delete_link():
+    sql = """SELECT web FROM search GROUP BY web"""
+    results = database.select(sql)
+    i = 1
+    print()
+    for result in results:
+        print("{} - {}".format(i, result[0]))
+        i += 1
+    print("0 - Retour")
+    choose = input("\nQuel est le site ou vous-voulez supprimé la recherche ? ")
+    choose = int(choose)
+    if choose == 0:
+        time.sleep(2)
+        home()
+    elif 1 <= choose <= len(results):
+        web = results[choose-1][0]
+        delete_sub_link(web)
+    else:
+        time.sleep(2)
+        delete_link()
+
+
+def delete_sub_link(web):
     conn = None
-    sql = """SELECT * FROM search"""
+    sql = """SELECT * FROM search WHERE web='{}'""".format(web)
     results = database.select(sql)
     print()
     i = 1
     for result in results:
-        print("{} - {}  {}".format(i, result[1], result[2]))
+        print("{} - {}".format(i, result[2]))
         i += 1
     print("0 - Retour\n")
     choose = int(input("Quel cherche voulez-vous supprimer ? "))
     if choose == 0:
-        home()
-    if 1 <= choose <= len(results):
+        delete_link()
+    elif 1 <= choose <= len(results):
         print("{}  {} Supprimé".format(results[choose-1][2], results[choose-1][1]))
         conn = database.connection()
         sql = """DELETE FROM search WHERE id={}""".format(results[choose-1][0])
@@ -87,7 +109,7 @@ def delete_link():
     except conn.Error as e:
         print(e)
     time.sleep(2)
-    home()
+    delete_link()
 
 
 def list_link():
