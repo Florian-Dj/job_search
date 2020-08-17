@@ -16,4 +16,7 @@ Exécutable permettant de savoir les dernières offres d'emplois sur vos sites.
 - Fichier option pour les temps de recharge
 
 ## Idées
+- Avoir un sous menu dans les annonces *(non lue, postulée, expirée, inadéquate)*
+    - Refont BDD ajouter 2 colonnes view et status *(boolean et varchar)* dans la table annonce
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
+- Faire 2 executable *(run et autres)* ou lancer le run en fond de tâche

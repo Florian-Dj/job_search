@@ -19,7 +19,7 @@ def home():
     for result in results:
         web[result[0]] = result[1]
     print("""
-    Total Annonces : \t({})
+    Total Annonces : ({})
     
     1 - Pôle-Emploi\t({})
     2 - Linkedin\t({})

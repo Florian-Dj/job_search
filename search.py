@@ -74,7 +74,6 @@ def delete_link():
     choose = input("\nQuel est le site ou vous-voulez supprimé la recherche ? ")
     choose = int(choose)
     if choose == 0:
-        time.sleep(2)
         home()
     elif 1 <= choose <= len(results):
         web = results[choose-1][0]
