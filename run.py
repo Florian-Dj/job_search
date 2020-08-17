@@ -86,7 +86,7 @@ def injection_sql(conn, sql, link, title, result):
     try:
         data = conn.cursor()
         data.execute(sql)
-        playsound.playsound("sound/alert.mp3", False)
+        # playsound.playsound("sound/alert.mp3", False)
         global web
         if "{} / {}".format(result[1], result[2]) != web:
             web = "{} / {}".format(result[1], result[2])

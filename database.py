@@ -48,8 +48,7 @@ def create_ad(co):
             description VARCHAR(255)    NULL,
             location    VARCHAR(255)    NOT NULL,
             link        VARCHAR(255)    NOT NULL        UNIQUE,
-            view        INTEGER         NOT NULL        DEFAULT 0,
-            status      VARCHAR(255)    NULL,
+            status      VARCHAR(255)    NOT NULL        DEFAULT'non_lu',
             
             CONSTRAINT fk_site_id FOREIGN KEY (site_id) REFERENCES search(id) ON DELETE CASCADE
         )"""
