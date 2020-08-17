@@ -8,7 +8,10 @@ Exécutable permettant de savoir les dernières offres d'emplois sur vos sites.
 ## Utilisation
 
 ## Mise à jour
-**V0.1**
+**V0.2**
+- Ajout du status des annonces *(non lues, postulées, inadéquite, expirées)*
+
+V0.1
 - Ajouter et supprimer des recherches
 - Liste des annonces et des recherches
 - Analyse des offres sur Pôle Emploi, Linkedin et Leboncoin
