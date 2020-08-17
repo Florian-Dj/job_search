@@ -9,9 +9,10 @@ Exécutable permettant de savoir les dernières offres d'emplois sur vos sites.
 
 ## Mise à jour
 **V0.1**
-- Ajouter des recherches
+- Ajouter et supprimer des recherches
+- Liste des annonces et des recherches
 - Analyse des offres sur Pôle Emploi, Linkedin et Leboncoin
-- Alertes son d'une nouvelle annonce
+- Alertes sonnore d'une nouvelle annonce
 - Fichier option pour les temps de recharge
 
 ## Idées
