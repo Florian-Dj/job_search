@@ -42,22 +42,21 @@ def choose_site(status):
     for result in results:
         web[result[0]] = result[1]
     print("""
-    1 - Tout\t\t({})
-    2 - Pôle-Emploi\t({})
-    3 - Linkedin\t({})
-    4 - Leboncoin\t({})
+    1 - Pôle-Emploi\t({})
+    2 - Linkedin\t({})
+    3 - Leboncoin\t({})
     0 - Retour
-    """.format(total[0], web["Pole-Emploi"], web["Linkedin"], web["Leboncoin"]))
+    """.format( web["Pole-Emploi"], web["Linkedin"], web["Leboncoin"]))
     choose = input("Votre action : ")
     try:
         choose = int(choose)
         if choose == 0:
             home()
-        elif choose == 2:
+        elif choose == 1:
             list_search("Pole-Emploi", status, web["Pole-Emploi"])
-        elif choose == 3:
+        elif choose == 2:
             list_search("Linkedin", status, web["Linkedin"])
-        elif choose == 4:
+        elif choose == 3:
             list_search("Leboncoin", status, web["Leboncoin"])
     except ValueError:
         print("Merci de rentrer une donné valide !")
@@ -84,6 +83,8 @@ def list_search(web, status, nb):
         choose = int(choose)
         if choose == 0:
             choose_site(status)
+        elif choose == 1:
+            list_ad(web, ['*'], status, nb)
         elif 2 <= choose <= len(results):
             list_ad(web, results[choose-1], status, nb)
         else:
@@ -97,16 +98,22 @@ def list_search(web, status, nb):
 
 
 def list_ad(site, subject, status, nb):
-    config.read("config.ini")
-    sql = """SELECT ad.id, ad.title, ad.description, ad.location, ad.link, search.web, status FROM ad
-            LEFT JOIN search ON ad.site_id = search.id
-            WHERE site_id={} AND status='{}'""".format(subject[0], status)
+    if subject[0] == '*':
+        sql = """SELECT ad.id, ad.title, ad.description, ad.location, ad.link, search.web, status FROM ad
+                LEFT JOIN search ON ad.site_id = search.id
+                WHERE web='{}' AND status='{}'""".format(site, status)
+        subject.extend(["2", "Tout"])
+    else:
+        sql = """SELECT ad.id, ad.title, ad.description, ad.location, ad.link, search.web, status FROM ad
+                LEFT JOIN search ON ad.site_id = search.id
+                WHERE site_id={} AND status='{}'""".format(subject[0], status)
     results = database.select(sql)
     if results:
         conn = database.connection()
         print("\n----- ({}) Annonces pour {} / {} -----\n".format(len(results), site, subject[2]))
         for result in results:
             if result[6] != "non_lu":
+                config.read("config.ini")
                 time.sleep(int(config["DEFAULT"]["cooldown_ad"]))
                 print("\nLien : {}\nTitre : {}\nLieu : {}\nDescription : {}\n".format(result[4], result[1], result[3], result[2]))
             else:
@@ -119,7 +126,7 @@ def list_ad(site, subject, status, nb):
 
 
 def change_status(result, conn):
-    print("\nLien : {}\nTitre : {}".format(result[4], result[1], result[3], result[2]))
+    print("\nLien : {}\nTitre : {}\t\tLieu : {}".format(result[4], result[1], result[3]))
     print("1 - Postulée \t 2 - Inadequate \t 3 - Expirée \t 4 - Rien")
     choose = input("Votre choix : ")
     print()
