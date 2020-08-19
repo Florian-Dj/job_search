@@ -42,11 +42,10 @@ def choose_site(status):
     for result in results:
         web[result[0]] = result[1]
     print("""
-    Total Annonces : ({})
-    
-    1 - Pôle-Emploi\t({})
-    2 - Linkedin\t({})
-    3 - Leboncoin\t({})
+    1 - Tout\t\t({})
+    2 - Pôle-Emploi\t({})
+    3 - Linkedin\t({})
+    4 - Leboncoin\t({})
     0 - Retour
     """.format(total[0], web["Pole-Emploi"], web["Linkedin"], web["Leboncoin"]))
     choose = input("Votre action : ")
@@ -54,26 +53,27 @@ def choose_site(status):
         choose = int(choose)
         if choose == 0:
             home()
-        elif choose == 1:
-            list_search("Pole-Emploi", status)
         elif choose == 2:
-            list_search("Linkedin", status)
+            list_search("Pole-Emploi", status, web["Pole-Emploi"])
         elif choose == 3:
-            list_search("Leboncoin", status)
+            list_search("Linkedin", status, web["Linkedin"])
+        elif choose == 4:
+            list_search("Leboncoin", status, web["Leboncoin"])
     except ValueError:
         print("Merci de rentrer une donné valide !")
         time.sleep(2)
         home()
 
 
-def list_search(web, status):
+def list_search(web, status, nb):
     sql = """SELECT search.*, COUNT(ad.site_id), status FROM ad
             LEFT JOIN search ON ad.site_id = search.id
-            WHERE web='{}' AND status='{}'
-            GROUP BY search.id""".format(web, status)
+            WHERE web='{w}' AND status='{s}'
+            GROUP BY search.id""".format(w=web, s=status)
     results = database.select(sql)
-    i = 1
     print()
+    print("1 - Tout {} ({})".format(" "*31, nb))
+    i = 2
     for result in results:
         space = 35 - len(result[2])
         print("{} - {} {} ({})".format(i, result[2], " "*space, result[5]))
@@ -84,7 +84,7 @@ def list_search(web, status):
         choose = int(choose)
         if choose == 0:
             choose_site(status)
-        elif 1 <= choose <= len(results):
+        elif 2 <= choose <= len(results):
             list_ad(web, results[choose-1], status)
         else:
             print("Merci de rentrer une donné valide !")
