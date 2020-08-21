@@ -3,13 +3,16 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return render(request, 'home.html')
+    context = {
+        "name":"Mucral"
+    }
+    return render(request, 'home.html', context)
 # Create your views here.
 
 
 def search(request):
-    return HttpResponse("Toutes les recherches ici même !")
+    return render(request, 'search.html')
 
 
 def ad(request):
-    return  HttpResponse("Toutes les annonces sont ici")
+    return render(request, 'ad.html')
