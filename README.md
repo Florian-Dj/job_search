@@ -2,8 +2,8 @@
 Exécutable permettant de savoir les dernières offres d'emplois sur vos sites.
 
 ## Exigence
-- BeautifulSoup4 >= 4.9.*+
-- Requests >= 2.24.*+
+- BeautifulSoup4 >= 4.9.*
+- Requests >= 2.24.*
 - Playsound >= 1.2.*
 
 ## Utilisation
@@ -25,3 +25,4 @@ V0.1
 ## Idées
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
 - Faire 2 executable *(run et autres)* ou lancer le run en fond de tâche
+- Pannel Web Django *(remplacement exe)*
