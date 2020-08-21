@@ -9,7 +9,10 @@ Exécutable permettant de savoir les dernières offres d'emplois sur vos sites.
 ## Utilisation
 
 ## Mise à jour
-**V0.2**
+**V0.3**
+- Début du projet sous Django
+
+V0.2
 - Ajout du status des annonces *(non lues, postulées, inadéquite, expirées)*
 - Ajout un sous menu dans les annonces *(non lue, postulée, expirée, inadéquate)*
 - Possibilité de voir toutes les annonces du même status d'un site
