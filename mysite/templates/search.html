@@ -7,14 +7,27 @@
 <h1>Page des recherches</h1>
 <p>Bienvenu sur la page des recherches</p>
 
-<table>
+<div class="wrap-table100">
+    <div class="table100">
+        <table>
+            <thead>
+                <tr>
+                   <th>Site</th>
+                   <th>Sujet</th>
+                   <th>Lien</th>
+                </tr>
+            </thead>
+            <tbody>
 {% for se in search_list %}
-    <tr>
-        <td>{{se.web}}</td>
-        <td>{{se.subject}}</td>
-        <td><a href="{{se.link_search}}" target="_blank">Lien</a></td>
-    </tr>
+                <tr>
+                    <td>{{se.web}}</td>
+                    <td>{{se.subject}}</td>
+                    <td><a href="{{se.link_search}}" target="_blank">Lien</a></td>
+                </tr>
 {% endfor %}
-</table>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 {% endblock %}
