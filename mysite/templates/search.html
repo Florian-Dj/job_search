@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'template.html' %}
 
 {% block title %} Recherches {% endblock %}
 
@@ -6,5 +6,15 @@
 
 <h1>Page des recherches</h1>
 <p>Bienvenu sur la page des recherches</p>
+
+<table>
+{% for se in search_list %}
+    <tr>
+        <td>{{se.web}}</td>
+        <td>{{se.subject}}</td>
+        <td><a href="{{se.link_search}}" target="_blank">Lien</a></td>
+    </tr>
+{% endfor %}
+</table>
 
 {% endblock %}
