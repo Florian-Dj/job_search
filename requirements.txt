@@ -1,3 +1,4 @@
 beautifulsoup4>=4.9.*
 playsound>=1.2.*
 requests>=2.24.*
+Django==3.1
