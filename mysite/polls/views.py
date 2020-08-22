@@ -3,8 +3,10 @@ from .models import Search, Ad
 
 
 def index(request):
+    last_ad = Ad.objects.all().order_by("-id")[:10]
+    last_ad = reversed(last_ad)
     context = {
-        "name": "Mucral"
+        'last_ad': last_ad
     }
     return render(request, 'home.html', context)
 # Create your views here.
