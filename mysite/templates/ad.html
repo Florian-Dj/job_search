@@ -4,8 +4,22 @@
 
 {% block body %}
 
-<div class="wrap-table100">
+<div class="title">
     <h3> Annonces : {{ ad_list.count }}</h3>
+    <div class="form">
+        <label for="status-select">Status : </label>
+        <select name="status" id="status-select">
+            <option value="">----</option>
+            <option value="not-read">Non Lue</option>
+            <option value="applied">Postulé</option>
+            <option value="inadequate">Inadéquate</option>
+            <option value="expired">Expiré</option>
+        </select>
+        <button>Recherche</button>
+    </div>
+</div>
+
+<div class="wrap-table100">
     <div class="table100">
         <table>
             <thead>
@@ -21,7 +35,6 @@
                     <td class="title"><a href="{{ad.link}}" target="_blank">{{ad.title}}</a></td>
                     <td class="location">{{ad.location}}</td>
                     <td class="description">{{ad.description}}</td>
-
                 </tr>
 {% endfor %}
             </tbody>

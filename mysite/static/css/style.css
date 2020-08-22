@@ -47,9 +47,26 @@ a {
 }
 
 
+section {
+    margin-top: 50px;
+}
+
+
+div.title{
+  margin: auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.title h3{
+    margin: 0;
+}
+
+
 .wrap-table100 {
-  width: 85%;
-  margin: 75px auto;
+  width: 80%;
+  margin: 25px auto;
 }
 
 table {
