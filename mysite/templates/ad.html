@@ -5,22 +5,22 @@
 {% block body %}
 
 <div class="wrap-table100">
-    <h3> Il y a actuellement {{ ad_list.count }} annonces.</h3>
+    <h3> Annonces : {{ ad_list.count }}</h3>
     <div class="table100">
         <table>
             <thead>
                 <tr>
                    <th>Titre</th>
                    <th>Description</th>
-                   <th>Lien</th>
+                   <th class="link">Lien</th>
                 </tr>
             </thead>
             <tbody>
 {% for ad in ad_list %}
                 <tr>
-                    <td>{{ad.title}}</td>
-                    <td>{{ad.description}}</td>
-                    <td><a href="{{ad.link}}" target="_blank">Lien</a></td>
+                    <td class="title">{{ad.title}}</td>
+                    <td class="description">{{ad.description}}</td>
+                    <td class="link"><a href="{{ad.link}}" target="_blank">Lien</a></td>
                 </tr>
 {% endfor %}
             </tbody>
