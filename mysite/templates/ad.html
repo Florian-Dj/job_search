@@ -10,17 +10,18 @@
         <table>
             <thead>
                 <tr>
-                   <th>Titre</th>
-                   <th>Description</th>
-                   <th class="link">Lien</th>
+                    <th>Titre</th>
+                    <th>Localisation</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
 {% for ad in ad_list %}
                 <tr>
-                    <td class="title">{{ad.title}}</td>
+                    <td class="title"><a href="{{ad.link}}" target="_blank">{{ad.title}}</a></td>
+                    <td class="location">{{ad.location}}</td>
                     <td class="description">{{ad.description}}</td>
-                    <td class="link"><a href="{{ad.link}}" target="_blank">Lien</a></td>
+
                 </tr>
 {% endfor %}
             </tbody>

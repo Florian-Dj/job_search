@@ -48,7 +48,7 @@ a {
 
 
 .wrap-table100 {
-  width: 80%;
+  width: 85%;
   margin: 75px auto;
 }
 
@@ -67,16 +67,11 @@ table * {position: relative;}
 
 table td, table th {padding-left: 8px;}
 
-td.title{width: 40%;}
-
-td.link, th.link{
-  width: 10%;
-  text-align: center;
-}
+td.title{width: 35%;}
 
 td.description{
-  width: 50%;
-  padding: 8px 5px;
+  width: 45%;
+  padding: 15px 10px;
 }
 
 tbody tr {border-top: 1px solid black;}
