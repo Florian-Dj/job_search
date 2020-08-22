@@ -12,15 +12,13 @@
                 <tr>
                    <th>Site</th>
                    <th>Sujet</th>
-                   <th>Lien</th>
                 </tr>
             </thead>
             <tbody>
 {% for se in search_list %}
                 <tr>
-                    <td>{{se.web}}</td>
-                    <td>{{se.subject}}</td>
-                    <td><a href="{{se.link_search}}" target="_blank">Lien</a></td>
+                    <td><a href="{{se.link_search}}" target="_blank">{{se.web}}</a></td>
+                    <td><a href="{{se.link_search}}" target="_blank">{{se.subject}}</a></td>
                 </tr>
 {% endfor %}
             </tbody>

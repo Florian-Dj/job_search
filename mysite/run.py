@@ -1,24 +1,25 @@
 # -*- coding: utf-8 -*-
 
 import time
-import database
+import sqlite3
+from sqlite3 import Error
 import requests
 from bs4 import BeautifulSoup
 import playsound
-import datetime
 import configparser
+import os
+import asyncio
 
 config = configparser.ConfigParser()
 web = ""
+data_name = "data.db"
 
 
 def home():
     while True:
         config.read("config.ini")
-        sql = """SELECT * FROM search"""
-        results = database.select(sql)
-        datetime_now = datetime.datetime.now().strftime("%H:%M:%S")
-        print("\n======== {} ========\n".format(datetime_now))
+        sql = """SELECT * FROM polls_search"""
+        results = db_select(sql)
         for result in results:
             parse(result)
         time.sleep(int(config["DEFAULT"]["cooldown_scraping"]))
@@ -39,31 +40,31 @@ def ep(result):
     req = requests.get(result[3])
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="result")
-    conn = database.connection()
+    conn = db_connection()
     for ad in ads:
         link = "{}{}".format(result[4], ad.a['href'])
         title = ad.h2.text.replace("\n", "")
         location = ad.find('p', class_="subtext").text.replace("\n", "")
         description = ad.find('p', class_="description").text.replace('"', "")
-        sql = """INSERT INTO ad (site_id, title, description, location, link) VALUES ({}, "{}", "{}", "{}", "{}")"""\
-            .format(result[0], title, description, location, link)
-        injection_sql(conn, sql, link, title, result)
-    close(conn)
+        sql = """INSERT INTO polls_ad (site_id, title, description, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}", "{}")"""\
+            .format(result[0], title, description, location, link, "non_lue")
+        injection_sql(conn, sql, result)
+    db_close(conn)
 
 
 def lk(result):
     req = requests.get(result[3])
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="result-card")
-    conn = database.connection()
+    conn = db_connection()
     for ad in ads:
         link = ad.a['href'].split("?")[0]
         title = ad.h3.text
         location = ad.find('span', class_="job-result-card__location").text
-        sql = """INSERT INTO ad (site_id, title, location, link) VALUES ({}, "{}", "{}", "{}")"""\
-            .format(result[0], title, location, link)
-        injection_sql(conn, sql, link, title, result)
-    close(conn)
+        sql = """INSERT INTO polls_ad (site_id, title, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}")"""\
+            .format(result[0], title, location, link, "non_lue")
+        injection_sql(conn, sql, result)
+    db_close(conn)
 
 
 def lb(result):
@@ -71,39 +72,64 @@ def lb(result):
     req = requests.get(result[3], headers=headers)
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="_3DFQ-")
-    conn = database.connection()
+    conn = db_connection()
     for ad in ads:
         link = "{}{}".format(result[4], ad.a['href'])
         title = ad.find("p", class_="_2tubl").text
         location = ad.find('p', class_="_2qeuk").text
-        sql = """INSERT INTO ad (site_id, title, location, link) VALUES ({}, "{}", "{}", "{}")"""\
-            .format(result[0], title, location, link)
-        injection_sql(conn, sql, link, title, result)
-    close(conn)
+        sql = """INSERT INTO polls_ad (site_id, title, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}")"""\
+            .format(result[0], title, location, link, "non_lue")
+        injection_sql(conn, sql, result)
+    db_close(conn)
 
 
-def injection_sql(conn, sql, link, title, result):
+def injection_sql(conn, sql, result):
     try:
         data = conn.cursor()
         data.execute(sql)
-        playsound.playsound("sound/alert.mp3", False)
+        playsound.playsound("static/sound/alert.mp3", False)
         global web
         if "{} / {}".format(result[1], result[2]) != web:
             web = "{} / {}".format(result[1], result[2])
-            print("\n----- {} -----\n".format(web))
-        print("Lien : {}\nTitre : {}".format(link, title))
-        print()
         time.sleep(int(config["DEFAULT"]["cooldown_new_ad"]))
-    except conn.IntegrityError:
+    except conn.IntegrityError as u:
         pass
     except conn.Error as e:
         print(sql)
         print(e)
 
 
-def close(conn):
+def db_connection():
+    conn = None
+    try:
+        conn = sqlite3.connect(data_name)
+        conn.execute('PRAGMA foreign_keys = 1')
+        return conn
+    except Error as e:
+        print(e)
+    return conn
+
+
+def db_close(conn):
     try:
         conn.commit()
         conn.close()
     except conn.Error as e:
         print(e)
+
+
+def db_select(sql):
+    try:
+        conn = db_connection()
+        c = conn.cursor()
+        c.execute(sql)
+        result = c.fetchall()
+        return result
+    except Error as e:
+        print(e)
+
+
+if __name__ == '__main__':
+    asyncio.run(os.system('python manage.py runserver 80'))
+    asyncio.run(home())
+    # pyinstaller --onefile --icon=logo.ico main.py     Command Pyinstaller

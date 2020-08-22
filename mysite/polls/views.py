@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from .models import Search
-from django.http import HttpResponse
+from .models import Search, Ad
 
 
 def index(request):
@@ -20,4 +19,8 @@ def search(request):
 
 
 def ad(request):
-    return render(request, 'ad.html')
+    ad_list = Ad.objects.all()
+    context = {
+        'ad_list': ad_list
+    }
+    return render(request, 'ad.html', context)

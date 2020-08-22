@@ -4,7 +4,28 @@
 
 {% block body %}
 
-<h1>Page des annonces</h1>
-<p>Bienvenu sur la page des annonces</p>
+<div class="wrap-table100">
+    <h3> Il y a actuellement {{ ad_list.count }} annonces.</h3>
+    <div class="table100">
+        <table>
+            <thead>
+                <tr>
+                   <th>Titre</th>
+                   <th>Description</th>
+                   <th>Lien</th>
+                </tr>
+            </thead>
+            <tbody>
+{% for ad in ad_list %}
+                <tr>
+                    <td>{{ad.title}}</td>
+                    <td>{{ad.description}}</td>
+                    <td><a href="{{ad.link}}" target="_blank">Lien</a></td>
+                </tr>
+{% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 
 {% endblock %}

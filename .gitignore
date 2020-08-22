@@ -6,3 +6,5 @@ build/*
 dist/*
 *.spec
 */*/__pycache__/*
+mysite/polls/migrations/*
+*.db-journal
