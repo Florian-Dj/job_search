@@ -9,7 +9,6 @@ def index(request):
         'last_ad': last_ad
     }
     return render(request, 'home.html', context)
-# Create your views here.
 
 
 def search(request):
@@ -21,8 +20,13 @@ def search(request):
 
 
 def ad(request):
-    ad_list = Ad.objects.all()
+    select = request.GET['status']
+    if select != "all":
+        ad_list = Ad.objects.filter(status=select).all()
+    else:
+        ad_list = Ad.objects.all()
     context = {
-        'ad_list': ad_list
+        'ad_list': ad_list,
+        'status': select
     }
     return render(request, 'ad.html', context)

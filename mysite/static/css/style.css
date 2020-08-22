@@ -51,10 +51,9 @@ section {
     margin-top: 50px;
 }
 
-
 div.title{
   margin: auto;
-  width: 80%;
+  width: 78%;
   display: flex;
   justify-content: space-between;
 }
@@ -62,7 +61,6 @@ div.title{
 div.title h3{
     margin: 0;
 }
-
 
 .wrap-table100 {
   width: 80%;

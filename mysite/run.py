@@ -47,7 +47,7 @@ def ep(result):
         location = ad.find('p', class_="subtext").text.replace("\n", "")
         description = ad.find('p', class_="description").text.replace('"', "")
         sql = """INSERT INTO polls_ad (site_id, title, description, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}", "{}")"""\
-            .format(result[0], title, description, location, link, "non_lue")
+            .format(result[0], title, description, location, link, "not-read")
         injection_sql(conn, sql, result)
     db_close(conn)
 
@@ -62,7 +62,7 @@ def lk(result):
         title = ad.h3.text
         location = ad.find('span', class_="job-result-card__location").text
         sql = """INSERT INTO polls_ad (site_id, title, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}")"""\
-            .format(result[0], title, location, link, "non_lue")
+            .format(result[0], title, location, link, "not-read")
         injection_sql(conn, sql, result)
     db_close(conn)
 
@@ -78,7 +78,7 @@ def lb(result):
         title = ad.find("p", class_="_2tubl").text
         location = ad.find('p', class_="_2qeuk").text
         sql = """INSERT INTO polls_ad (site_id, title, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}")"""\
-            .format(result[0], title, location, link, "non_lue")
+            .format(result[0], title, location, link, "not-read")
         injection_sql(conn, sql, result)
     db_close(conn)
 

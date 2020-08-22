@@ -5,17 +5,19 @@
 {% block body %}
 
 <div class="title">
-    <h3> Annonces : {{ ad_list.count }}</h3>
+    <h3> Annonces <i>({{ status }})</i>: {{ ad_list.count }}</h3>
     <div class="form">
-        <label for="status-select">Status : </label>
-        <select name="status" id="status-select">
-            <option value="">----</option>
-            <option value="not-read">Non Lue</option>
-            <option value="applied">Postulé</option>
-            <option value="inadequate">Inadéquate</option>
-            <option value="expired">Expiré</option>
-        </select>
-        <button>Recherche</button>
+        <form id="status" action="{% url 'annonce' %}" method="get">
+            <label for="status-select">Status : </label>
+            <select form="status" name="status" id="status-select">
+                <option value="all">Tout</option>
+                <option value="not-read">Non Lue</option>
+                <option value="applied">Postulé</option>
+                <option value="inadequate">Inadéquate</option>
+                <option value="expired">Expiré</option>
+            </select>
+            <input class="button" type="submit" value="Recherche">
+        </form>
     </div>
 </div>
 
