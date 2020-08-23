@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from .models import Search, Ad
+from . import run
 
 
 def index(request):
     last_ad = Ad.objects.all().order_by("-id")[:10]
     last_ad = reversed(last_ad)
+    if request.GET.get('mybtn', ''):
+        run.home()
     context = {
         'last_ad': last_ad
     }

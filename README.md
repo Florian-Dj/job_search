@@ -32,5 +32,6 @@ V0.1
 - Fichier option pour les temps de recharge
 
 ## Idées
+- Bouton pour Scrappe les nouvelles annonces
+- Formulaire pour ajouter des recherches
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
-- Pannel Web Django *(remplacement exe)*

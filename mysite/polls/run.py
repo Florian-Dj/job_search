@@ -7,8 +7,6 @@ import requests
 from bs4 import BeautifulSoup
 import playsound
 import configparser
-import os
-import asyncio
 
 config = configparser.ConfigParser()
 web = ""
@@ -16,13 +14,11 @@ data_name = "data.db"
 
 
 def home():
-    while True:
-        config.read("config.ini")
-        sql = """SELECT * FROM polls_search"""
-        results = db_select(sql)
-        for result in results:
-            parse(result)
-        time.sleep(int(config["DEFAULT"]["cooldown_scraping"]))
+    config.read("config.ini")
+    sql = """SELECT * FROM polls_search"""
+    results = db_select(sql)
+    for result in results:
+        parse(result)
 
 
 def parse(result):
@@ -87,15 +83,12 @@ def injection_sql(conn, sql, result):
     try:
         data = conn.cursor()
         data.execute(sql)
-        playsound.playsound("static/sound/alert.mp3", False)
         global web
         if "{} / {}".format(result[1], result[2]) != web:
             web = "{} / {}".format(result[1], result[2])
-        time.sleep(int(config["DEFAULT"]["cooldown_new_ad"]))
     except conn.IntegrityError as u:
         pass
     except conn.Error as e:
-        print(sql)
         print(e)
 
 
@@ -127,8 +120,3 @@ def db_select(sql):
         return result
     except Error as e:
         print(e)
-
-
-if __name__ == '__main__':
-    os.system('python manage.py runserver 80')
-    # pyinstaller --onefile --icon=logo.ico run.py     Command Pyinstaller
