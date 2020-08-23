@@ -5,7 +5,7 @@ class Search(models.Model):
     web = models.CharField(max_length=255)
     subject = models.CharField(max_length=255)
     link_search = models.CharField(max_length=255)
-    link_ad = models.CharField(max_length=255)
+    link_ad = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return "{} - {}".format(self.web, self.subject)
@@ -18,3 +18,4 @@ class Ad(models.Model):
     location = models.CharField(max_length=255)
     link = models.CharField(max_length=255, unique=True)
     status = models.CharField(max_length=255)
+

@@ -36,7 +36,7 @@ def ep(result):
     conn = db_connection()
     for ad in ads:
         link = "{}{}".format(result[4], ad.a['href'])
-        title = ad.h2.text.replace("\n", "")
+        title = ad.h2.text.replace("\n", "").capitalize()
         location = ad.find('p', class_="subtext").text.replace("\n", "")
         description = ad.find('p', class_="description").text.replace('"', "")
         sql = """INSERT INTO polls_ad (site_id, title, description, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}", "{}")"""\
@@ -52,7 +52,7 @@ def lk(result):
     conn = db_connection()
     for ad in ads:
         link = ad.a['href'].split("?")[0]
-        title = ad.h3.text
+        title = ad.h3.text.capitalize()
         location = ad.find('span', class_="job-result-card__location").text
         sql = """INSERT INTO polls_ad (site_id, title, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}")"""\
             .format(result[0], title, location, link, "not-read")
@@ -68,7 +68,7 @@ def lb(result):
     conn = db_connection()
     for ad in ads:
         link = "{}{}".format(result[4], ad.a['href'])
-        title = ad.find("p", class_="_2tubl").text
+        title = ad.find("p", class_="_2tubl").text.capitalize()
         location = ad.find('p', class_="_2qeuk").text
         sql = """INSERT INTO polls_ad (site_id, title, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}")"""\
             .format(result[0], title, location, link, "not-read")
