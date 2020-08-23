@@ -14,7 +14,7 @@ def index(request):
 
 
 def search(request):
-    search_list = Search.objects.all()
+    search_list = Search.objects.order_by('web')
     context = {
         'search_list': search_list
     }
