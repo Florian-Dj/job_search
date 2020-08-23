@@ -130,6 +130,5 @@ def db_select(sql):
 
 
 if __name__ == '__main__':
-    asyncio.run(home())
-    asyncio.run(os.system('python manage.py runserver 80'))
-    # pyinstaller --onefile --icon=logo.ico main.py     Command Pyinstaller
+    os.system('python manage.py runserver 80')
+    # pyinstaller --onefile --icon=logo.ico run.py     Command Pyinstaller

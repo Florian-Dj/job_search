@@ -20,7 +20,7 @@ def search(request):
 
 
 def ad(request):
-    select = request.GET['status']
+    select = request.GET.get('status', 'not-read')
     if select != "all":
         ad_list = Ad.objects.filter(status=select).all()
     else:
