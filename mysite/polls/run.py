@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import time
 import sqlite3
 from sqlite3 import Error
 import requests
 from bs4 import BeautifulSoup
-import playsound
 import configparser
 
 config = configparser.ConfigParser()
-web = ""
 data_name = "data.db"
 
 
@@ -44,7 +41,7 @@ def ep(result):
         description = ad.find('p', class_="description").text.replace('"', "")
         sql = """INSERT INTO polls_ad (site_id, title, description, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}", "{}")"""\
             .format(result[0], title, description, location, link, "not-read")
-        injection_sql(conn, sql, result)
+        injection_sql(conn, sql)
     db_close(conn)
 
 
@@ -59,7 +56,7 @@ def lk(result):
         location = ad.find('span', class_="job-result-card__location").text
         sql = """INSERT INTO polls_ad (site_id, title, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}")"""\
             .format(result[0], title, location, link, "not-read")
-        injection_sql(conn, sql, result)
+        injection_sql(conn, sql)
     db_close(conn)
 
 
@@ -75,18 +72,15 @@ def lb(result):
         location = ad.find('p', class_="_2qeuk").text
         sql = """INSERT INTO polls_ad (site_id, title, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}")"""\
             .format(result[0], title, location, link, "not-read")
-        injection_sql(conn, sql, result)
+        injection_sql(conn, sql)
     db_close(conn)
 
 
-def injection_sql(conn, sql, result):
+def injection_sql(conn, sql):
     try:
         data = conn.cursor()
         data.execute(sql)
-        global web
-        if "{} / {}".format(result[1], result[2]) != web:
-            web = "{} / {}".format(result[1], result[2])
-    except conn.IntegrityError as u:
+    except conn.IntegrityError:
         pass
     except conn.Error as e:
         print(e)
