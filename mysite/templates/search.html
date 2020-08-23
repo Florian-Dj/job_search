@@ -19,7 +19,7 @@
             <tbody>
 {% for search in search_list %}
                 <tr id="{{search.id}}">
-                    <td>{{search.web}}</td>
+                    <td class="site"><img src="../static/image/{{ search.web }}.png"/><span>{{search.web}}</span></td>
                     <td><a href="{{search.link_search}}" target="_blank">{{search.subject}}</a></td>
                 </tr>
 {% endfor %}

@@ -14,7 +14,7 @@ class Search(models.Model):
 class Ad(models.Model):
     site = models.ForeignKey(Search, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(null=True)
     location = models.CharField(max_length=255)
     link = models.CharField(max_length=255, unique=True)
     status = models.CharField(max_length=255)

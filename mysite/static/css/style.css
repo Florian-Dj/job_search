@@ -82,6 +82,22 @@ table * {position: relative;}
 
 table td, table th {padding-left: 8px;}
 
+table td.site{
+    margin-top: 12px;
+    display: flex;
+    justify-content: start;
+    width: 45%;
+}
+
+table img {
+    width: 24px;
+    padding: 0 12px;
+}
+
+table td span{
+    margin-top: 3px;
+}
+
 td.title{width: 35%;}
 
 td.description{

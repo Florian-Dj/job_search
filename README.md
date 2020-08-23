@@ -17,6 +17,7 @@ Exécutable permettant de savoir les dernières offres d'emplois sur vos sites.
 - Page pour voir les recherche
 - Page avec les annonces avec paramétres *(tout, non lu, postulé, expiré, inadéquate)*
 - Pannel Admin
+- Bouton pour chercher les nouvelles annonces
 
 V0.2
 - Ajout du status des annonces *(non lues, postulées, inadéquite, expirées)*
@@ -32,6 +33,6 @@ V0.1
 - Fichier option pour les temps de recharge
 
 ## Idées
-- Bouton pour Scrappe les nouvelles annonces
 - Formulaire pour ajouter des recherches
+- Changer les status des annonces directement sur la page
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
