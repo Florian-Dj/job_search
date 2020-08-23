@@ -24,7 +24,7 @@
             </thead>
             <tbody>
 {% for ad in last_ad %}
-                <tr>
+                <tr id="{{ad.id}}">
                     <td class="title"><a href="{{ad.link}}" target="_blank">{{ad.title}}</a></td>
                     <td class="location">{{ad.location}}</td>
                     <td class="description">{{ad.description}}</td>

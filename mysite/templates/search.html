@@ -16,10 +16,10 @@
                 </tr>
             </thead>
             <tbody>
-{% for se in search_list %}
-                <tr>
-                    <td>{{se.web}}</td>
-                    <td><a href="{{se.link_search}}" target="_blank">{{se.subject}}</a></td>
+{% for search in search_list %}
+                <tr id="{{search.id}}">
+                    <td>{{search.web}}</td>
+                    <td><a href="{{search.link_search}}" target="_blank">{{search.subject}}</a></td>
                 </tr>
 {% endfor %}
             </tbody>
