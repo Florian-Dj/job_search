@@ -4,14 +4,9 @@ import sqlite3
 from sqlite3 import Error
 import requests
 from bs4 import BeautifulSoup
-import configparser
-
-config = configparser.ConfigParser()
-data_name = "data.db"
 
 
 def home():
-    config.read("config.ini")
     sql = """SELECT * FROM polls_search"""
     results = db_select(sql)
     for result in results:
@@ -89,7 +84,7 @@ def injection_sql(conn, sql):
 def db_connection():
     conn = None
     try:
-        conn = sqlite3.connect(data_name)
+        conn = sqlite3.connect("data.db")
         conn.execute('PRAGMA foreign_keys = 1')
         return conn
     except Error as e:

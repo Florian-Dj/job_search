@@ -4,7 +4,7 @@ from django.db import models
 class Search(models.Model):
     web = models.CharField(max_length=255)
     subject = models.CharField(max_length=255)
-    link_search = models.CharField(max_length=255)
+    link_search = models.CharField(max_length=255, unique=True)
     link_ad = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
