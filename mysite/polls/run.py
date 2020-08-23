@@ -109,3 +109,15 @@ def db_select(sql):
         return result
     except Error as e:
         print(e)
+
+
+def test():
+    sql = """SELECT * FROM polls_ad
+            LEFT JOIN polls_search ON polls_ad.site_id = polls_search.id"""
+    results = db_select(sql)
+    for result in results:
+        print(result)
+
+
+if __name__ == '__main__':
+    test()

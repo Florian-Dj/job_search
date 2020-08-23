@@ -34,7 +34,7 @@
             <tbody>
 {% for ad in ad_list %}
                 <tr id="{{ad.id}}">
-                    <td class="title"><a href="{{ad.link}}" target="_blank">{{ad.title}}</a></td>
+                    <td class="title"><img src="../static/image/{{ ad.site.web }}.png"/><a href="{{ad.link}}" target="_blank"><b>{{ad.title}}</b></a></td>
                     <td class="location">{{ad.location}}</td>
                     <td class="description">{{ad.description}}</td>
                 </tr>

@@ -23,8 +23,9 @@ def search(request):
 
 def ad(request):
     select = request.GET.get('status', 'not-read')
-    if select != "all":
-        ad_list = Ad.objects.filter(status=select).all()
+    status = ["not-red", "applied", "inadequate", "expired"]
+    if select in status:
+        ad_list = Ad.objects.filter(status=select)
     else:
         ad_list = Ad.objects.all()
     context = {

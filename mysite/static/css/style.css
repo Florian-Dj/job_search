@@ -83,26 +83,33 @@ table * {position: relative;}
 table td, table th {padding-left: 8px;}
 
 table td.site{
-    margin-top: 12px;
-    display: flex;
-    justify-content: start;
-    width: 45%;
+    width: 25%;
+    padding-left: 15px;
 }
 
 table img {
-    width: 24px;
-    padding: 0 12px;
+    width: 28px;
+    height: 28px;
+    padding-right: 20px;
+    padding-left: 10px;
 }
 
-table td span{
-    margin-top: 3px;
+td.title{
+    width: 95%;
+    height: 100px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
-
-td.title{width: 35%;}
 
 td.description{
-  width: 45%;
-  padding: 15px 10px;
+  width: 55%;
+  padding: 0 10px;
+}
+
+td.location{
+  width: 20%;
+  padding: 0 8px;
 }
 
 tbody tr {border-top: 1px solid black;}
