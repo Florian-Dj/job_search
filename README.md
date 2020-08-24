@@ -36,4 +36,5 @@ V0.1
 - Fichier option pour les temps de recharge
 
 ## Idées
+- Ajouter d'autres site de recherche
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*

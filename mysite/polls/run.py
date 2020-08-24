@@ -14,18 +14,18 @@ def home():
 
 
 def parse(result):
-    if result[1] == "Pole-Emploi":
+    if result[3] == "Pole-Emploi":
         ep(result)
-    elif result[1] == "Linkedin":
+    elif result[3] == "Linkedin":
         lk(result)
-    elif result[1] == "Leboncoin":
+    elif result[3] == "Leboncoin":
         lb(result)
     else:
         print("Error")
 
 
 def ep(result):
-    req = requests.get(result[3])
+    req = requests.get(result[2])
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="result")
     conn = db_connection()
@@ -41,7 +41,7 @@ def ep(result):
 
 
 def lk(result):
-    req = requests.get(result[3])
+    req = requests.get(result[2])
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="result-card")
     conn = db_connection()
@@ -57,7 +57,7 @@ def lk(result):
 
 def lb(result):
     headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-    req = requests.get(result[3], headers=headers)
+    req = requests.get(result[2], headers=headers)
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="_3DFQ-")
     conn = db_connection()

@@ -42,7 +42,11 @@
             <tbody>
 {% for ad in ad_list %}
                 <tr id="{{ad.id}}">
-                    <td><a href="adminpolls/ad/{{ ad.id }}/change/" class="button" target="_blank">Mo</a></td>
+                    <td>
+                        <a style="color: black" href="adminpolls/ad/{{ ad.id }}/change/" target="_blank" title="Modifier">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                    </td>
                     <td class="title">
                         <img src="../static/image/{{ ad.site.web }}.png" alt="{{ ad.site.web }}" title="{{ ad.site.web }}"/>
                         <a href="{{ad.link}}" target="_blank"><b>{{ad.title}}</b></a>
