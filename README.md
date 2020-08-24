@@ -20,6 +20,7 @@ Exécutable permettant de savoir les dernières offres d'emplois sur vos sites.
 - Ajout de paramétres page annonces *(Leboncoin, Linkedin, Pole-Emploi)*
 - Formulaire pour ajouter des recherches
 - Bouton pour chercher les nouvelles annonces
+- Changer les status des annonces sur la page admin
 
 V0.2
 - Ajout du status des annonces *(non lues, postulées, inadéquite, expirées)*
@@ -35,5 +36,4 @@ V0.1
 - Fichier option pour les temps de recharge
 
 ## Idées
-- Changer les status des annonces directement sur la page
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
