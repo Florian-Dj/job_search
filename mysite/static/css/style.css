@@ -110,33 +110,33 @@ table img {
 }
 
 td.title{
+    height: 68px;
     width: 95%;
-    height: 80px;
     display: flex;
     justify-content: start;
     align-items: center;
 }
 
 td.description{
-  width: 55%;
+  width: 48%;
   padding: 0 10px;
 }
 
 td.location{
-  width: 20%;
+  width: 23%;
   padding: 0 8px;
 }
 
 tbody tr {border-top: 1px solid black;}
 
 table thead tr {
-  height: 40px;
+  height: 60px;
   background: #2c3e50;
   color: white;
 }
 
 table tbody tr {
-  height: 50px;
+    height: 50px;
 }
 
 table td, table th {
