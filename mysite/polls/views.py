@@ -22,7 +22,7 @@ def search(request):
 
 
 def ad(request):
-    select = request.GET.get('status', '')
+    select = request.GET.get('status', 'not-read')
     site = request.GET.get('site', '')
     if not site and not select:
         ad_list = Ad.objects.all()

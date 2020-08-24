@@ -33,6 +33,7 @@
         <table>
             <thead>
                 <tr>
+                    <th></th>
                     <th>Titre</th>
                     <th>Localisation</th>
                     <th>Description</th>
@@ -41,6 +42,7 @@
             <tbody>
 {% for ad in ad_list %}
                 <tr id="{{ad.id}}">
+                    <td><a href="adminpolls/ad/{{ ad.id }}/change/" class="button" target="_blank">Mo</a></td>
                     <td class="title">
                         <img src="../static/image/{{ ad.site.web }}.png" alt="{{ ad.site.web }}" title="{{ ad.site.web }}"/>
                         <a href="{{ad.link}}" target="_blank"><b>{{ad.title}}</b></a>
