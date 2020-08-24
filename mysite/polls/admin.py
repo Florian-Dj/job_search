@@ -3,8 +3,8 @@ from .models import Search, Ad
 
 
 class AdFields(admin.ModelAdmin):
-    fields = ("status",)
     list_display = ("title", "location")
+    readonly_fields = ("title", "location", "site", "description", "link")
 
 
 class SearchFields(admin.ModelAdmin):
