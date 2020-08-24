@@ -30,7 +30,7 @@ def ep(result):
     ads = soup.find_all('li', class_="result")
     conn = db_connection()
     for ad in ads:
-        link = "{}{}".format(result[4], ad.a['href'])
+        link = "{}{}".format("https://candidat.pole-emploi.fr", ad.a['href'])
         title = ad.h2.text.replace("\n", "").capitalize()
         location = ad.find('p', class_="subtext").text.replace("\n", "")
         description = ad.find('p', class_="description").text.replace('"', "")
@@ -62,7 +62,7 @@ def lb(result):
     ads = soup.find_all('li', class_="_3DFQ-")
     conn = db_connection()
     for ad in ads:
-        link = "{}{}".format(result[4], ad.a['href'])
+        link = "{}{}".format("https://www.leboncoin.fr", ad.a['href'])
         title = ad.find("p", class_="_2tubl").text.capitalize()
         location = ad.find('p', class_="_2qeuk").text
         sql = """INSERT INTO polls_ad (site_id, title, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}")"""\

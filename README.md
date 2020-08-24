@@ -13,10 +13,12 @@ Exécutable permettant de savoir les dernières offres d'emplois sur vos sites.
 ## Mise à jour
 **V0.3**
 - Pannel Web Django
-- Page Accueil avec les 10 dernières annonces
-- Page pour voir les recherche
-- Page avec les annonces avec paramétres *(tout, non lu, postulé, expiré, inadéquate)*
 - Pannel Admin
+- Page Accueil avec les 10 dernières annonces
+- Page pour voir les recherche et annonces
+- Ajout de paramétres page annonces  *(tout, non lu, postulé, expiré, inadéquate)*
+- Ajout de paramétres page annonces *(Leboncoin, Linkedin, Pole-Emploi)*
+- Formulaire pour ajouter des recherches
 - Bouton pour chercher les nouvelles annonces
 
 V0.2
@@ -33,6 +35,5 @@ V0.1
 - Fichier option pour les temps de recharge
 
 ## Idées
-- Formulaire pour ajouter des recherches
 - Changer les status des annonces directement sur la page
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
