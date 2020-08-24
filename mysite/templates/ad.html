@@ -5,18 +5,25 @@
 {% block body %}
 
 <div class="title">
-    <h3> Annonces <i>({{ status }}):</i> {{ ad_list.count }}</h3>
+    <h3> Annonces {{ ad_list.count }}</h3>
     <div class="form">
-        <form id="status" action="{% url 'annonce' %}" method="get">
+        <form id="site" action="{% url 'annonce' %}" method="get">
+            <label for="site-select">Site : </label>
+            <select form="site" name="site" id="site-select">
+                <option value="">----</option>
+                <option value="Leboncoin">Leboncoin</option>
+                <option value="Linkedin">Linkedin</option>
+                <option value="Pole-Emploi">Pôle-Emploi</option>
+            </select>
             <label for="status-select">Status : </label>
-            <select form="status" name="status" id="status-select">
-                <option value="all">Tout</option>
+            <select form="site" name="status" id="status-select">
+                <option value="">----</option>
                 <option value="not-read">Non Lue</option>
                 <option value="applied">Postulé</option>
                 <option value="inadequate">Inadéquate</option>
                 <option value="expired">Expiré</option>
             </select>
-            <input class="button" type="submit" value="Recherche">
+            <input class="button" type="submit" value="Filtrer">
         </form>
     </div>
 </div>
@@ -34,7 +41,10 @@
             <tbody>
 {% for ad in ad_list %}
                 <tr id="{{ad.id}}">
-                    <td class="title"><img src="../static/image/{{ ad.site.web }}.png" alt="{{ ad.site.web }}" title="{{ ad.site.web }}"/><a href="{{ad.link}}" target="_blank"><b>{{ad.title}}</b></a></td>
+                    <td class="title">
+                        <img src="../static/image/{{ ad.site.web }}.png" alt="{{ ad.site.web }}" title="{{ ad.site.web }}"/>
+                        <a href="{{ad.link}}" target="_blank"><b>{{ad.title}}</b></a>
+                    </td>
                     <td class="location">{{ad.location}}</td>
                     <td class="description">{{ad.description}}</td>
                 </tr>

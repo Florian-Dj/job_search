@@ -22,14 +22,23 @@ def search(request):
 
 
 def ad(request):
-    select = request.GET.get('status', 'not-read')
-    status = ["not-red", "applied", "inadequate", "expired"]
-    if select in status:
+    select = request.GET.get('status', '')
+    site = request.GET.get('site', '')
+    if not site and not select:
+        print("Here 1")
+        ad_list = Ad.objects.all()
+    elif not select:
+        print("Here 2")
+        ad_list = Ad.objects.filter(site__web=site)
+    elif not site:
+        print("Here 3")
         ad_list = Ad.objects.filter(status=select)
     else:
-        ad_list = Ad.objects.all()
+        print("Here 4")
+        ad_list = Ad.objects.filter(status=select, site__web=site)
     context = {
         'ad_list': ad_list,
-        'status': select
+        'status': select,
+        'site': site,
     }
     return render(request, 'ad.html', context)
