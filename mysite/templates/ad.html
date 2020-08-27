@@ -6,6 +6,11 @@
 <div class="title">
     <h3> Annonces {{ ad_list.count }}</h3>
     <div class="form">
+        <form action="" method="get">
+            <button name="ads" type="submit" class="filter" value="search"><i class="fas fa-search"></i> Recherche Nouvelles Annonces</button>
+        </form>
+    </div>
+    <div class="form">
         <form id="site" action="{% url 'annonce' %}" method="get">
             <label for="site-select">Site : </label>
             <select form="site" name="site" id="site-select">

@@ -11,8 +11,6 @@ def index(request):
     all_pe = all_ad.values('status').annotate(dcount=Count('status')).filter(site__web='Pole-Emploi')
     all_lb = all_ad.values('status').annotate(dcount=Count('status')).filter(site__web='Leboncoin')
     all_lk = all_ad.values('status').annotate(dcount=Count('status')).filter(site__web='Linkedin')
-    if request.GET.get('mybtn', ''):
-        run.home()
     context = {
         'all_ad': all_ad,
         'all_status': all_status,
@@ -33,6 +31,8 @@ def search(request):
 
 
 def ad(request):
+    if request.GET.get('ads', '') == "search":
+        run.home()
     status = request.GET.get('status', 'not-read')
     site = request.GET.get('site', '')
     if not site and not status:
