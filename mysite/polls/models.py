@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Search(models.Model):
+    objects = None
     web_choices = [('Leboncoin', 'Leboncoin'), ('Linkedin', 'Linkedin'), ('Pole-Emploi', 'Pôle-Emploi')]
     web = models.CharField("Site", max_length=255, choices=web_choices)
     subject = models.CharField("Sujet", max_length=255, help_text="Nom du Post")
@@ -9,6 +10,7 @@ class Search(models.Model):
 
 
 class Ad(models.Model):
+    objects = None
     status_choice = [('not-read', 'Non Lu'), ('applied', 'Postulé'), ('inadequate', 'Inadéquate'), ('expired', 'Expiré')]
     site = models.ForeignKey(Search, on_delete=models.CASCADE)
     title = models.CharField("Titre", max_length=255)

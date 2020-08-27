@@ -1,14 +1,25 @@
 from django.shortcuts import render
 from .models import Search, Ad
 from . import run
+from django.db.models import Count
 
 
 def index(request):
-    last_ad = Ad.objects.all().order_by("-id")[:10]
+    all_ad = Ad.objects.all()
+    all_status = all_ad.values('status').annotate(dcount=Count('status'))
+    all_site = all_ad.values('site__web').annotate(dcount=Count('site__web'))
+    all_pe = all_ad.values('status').annotate(dcount=Count('status')).filter(site__web='Pole-Emploi')
+    all_lb = all_ad.values('status').annotate(dcount=Count('status')).filter(site__web='Leboncoin')
+    all_lk = all_ad.values('status').annotate(dcount=Count('status')).filter(site__web='Linkedin')
     if request.GET.get('mybtn', ''):
         run.home()
     context = {
-        'last_ad': last_ad
+        'all_ad': all_ad,
+        'all_status': all_status,
+        'all_site': all_site,
+        'all_pe': all_pe,
+        'all_lb': all_lb,
+        'all_lk': all_lk
     }
     return render(request, 'home.html', context)
 

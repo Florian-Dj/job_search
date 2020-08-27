@@ -5,7 +5,7 @@
 {% block body %}
 
 <div class="title">
-    <h3> 10 Dernières annonces</h3>
+    <h3> Statistiques Annonces</h3>
     <div class="form">
         <form action="" method="get">
             <input class="button" type="submit" value="Recherche Nouvelles Annonces" name="mybtn">
@@ -13,25 +13,54 @@
     </div>
 </div>
 
-
 <div class="wrap-table100">
     <div class="table100">
         <table>
             <thead>
                 <tr>
-                   <th>Titre</th>
-                   <th>Localisation</th>
-                   <th>Description</th>
+                   <th></th>
+                   <th>Pôle-Emploi</th>
+                   <th>Linkedin</th>
+                   <th>Leboncoin</th>
+                   <th>Total</th>
                 </tr>
             </thead>
             <tbody>
-{% for ad in last_ad %}
-                <tr id="{{ad.id}}">
-                    <td class="title"><img src="../static/image/{{ ad.site.web }}.png" alt="{{ ad.site.web }}" title="{{ ad.site.web }}"/><a href="{{ad.link}}" target="_blank"><b>{{ad.title}}</b></a></td>
-                    <td class="location">{{ad.location}}</td>
-                    <td class="description">{{ad.description}}</td>
+                <tr>
+                    <th>Non-lu</th>
+                    <td>{{ all_pe.3.dcount }}</td>
+                    <td>{{ all_lk.3.dcount }}</td>
+                    <td>{{ all_lb.3.dcount }}</td>
+                    <td>{{ all_status.3.dcount }}</td>
                 </tr>
-{% endfor %}
+                <tr>
+                    <th>Inadéquate</th>
+                    <td>{{ all_pe.2.dcount }}</td>
+                    <td>{{ all_lk.2.dcount }}</td>
+                    <td>{{ all_lb.2.dcount }}</td>
+                    <td>{{ all_status.2.dcount }}</td>
+                </tr>
+                <tr>
+                    <th>Expiré</th>
+                    <td>{{ all_pe.1.dcount }}</td>
+                    <td>{{ all_lk.1.dcount }}</td>
+                    <td>{{ all_lb.1.dcount }}</td>
+                    <td>{{ all_status.1.dcount }}</td>
+                </tr>
+                <tr>
+                    <th>Postulé</th>
+                    <td>{{ all_pe.0.dcount }}</td>
+                    <td>{{ all_lk.0.dcount }}</td>
+                    <td>{{ all_lb.0.dcount }}</td>
+                    <td>{{ all_status.0.dcount }}</td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td>{{ all_site.0.dcount }}</td>
+                    <td>{{ all_site.1.dcount }}</td>
+                    <td>{{ all_site.2.dcount }}</td>
+                    <td>{{ all_ad.count }}</td>
+                </tr>
             </tbody>
         </table>
     </div>

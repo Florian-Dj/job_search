@@ -1,14 +1,15 @@
 # Recherche d'emploi
-Exécutable permettant de savoir les dernières offres d'emplois sur vos sites.
+Application Web permettant d'avoir' les dernières offres d'emplois.
 
 ## Exigence
 - Python >= 3.8
     - BeautifulSoup4 >= 4.9.*
     - Requests >= 2.24.*
-    - Playsound >= 1.2.*
     - Django == 3.1
 
 ## Utilisation
+Simple d'utilisation, cette application web va vous permettre de ne pas rater une annonce dans vos recherches.
+
 
 ## Mise à jour
 **V0.3**
