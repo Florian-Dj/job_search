@@ -23,7 +23,10 @@
                 <tr id="{{search.id}}">
                     <th class="site">{{search.web}}</th>
                     <td><a href="{{search.link_search}}" target="_blank">{{search.subject}}</a></td>
-                    <td><i class="fas fa-pen"></i> <i class="fas fa-trash-alt"></i></td>
+                    <td class="search">
+                        <a href="adminpolls/search/{{search.id}}/change/" target="_blank"><i class="fas fa-pen" title="Modifier"></i></a>
+                        <a href="adminpolls/search/{{search.id}}/delete/" target="_blank"><i class="fas fa-trash-alt" title="Supprimer"></i></a>
+                    </td>
                 </tr>
 {% endfor %}
             </tbody>

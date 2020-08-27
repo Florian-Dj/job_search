@@ -171,3 +171,13 @@ button.filter{
 button.filter:hover{
   cursor:pointer;
 }
+
+td.search{
+    text-align: center;
+}
+
+td.search a{
+    color: black;
+    font-size: 18px;
+    padding: 0 6px;
+}

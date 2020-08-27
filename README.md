@@ -15,11 +15,12 @@ Simple d'utilisation, cette application web va vous permettre de ne pas rater un
 **V0.3**
 - Pannel Web Django
 - Pannel Admin
-- Page Accueil avec les 10 dernières annonces
+- Page Accueil avec les statistiques des annonces
 - Page pour voir les recherche et annonces
-- Ajout de paramétres page annonces  *(tout, non lu, postulé, expiré, inadéquate)*
-- Ajout de paramétres page annonces *(Leboncoin, Linkedin, Pole-Emploi)*
 - Formulaire pour ajouter des recherches
+- Logo *(supprimer et modifier)* les recherches
+- Ajout de filtres pour annonces  *(Tout, Non Lu, Postulé, Expiré, Inadéquate)*
+- Ajout de filtres pour annonces *(Leboncoin, Linkedin, Pole-Emploi)*
 - Bouton pour chercher les nouvelles annonces
 - Changer les status des annonces sur la page admin
 
