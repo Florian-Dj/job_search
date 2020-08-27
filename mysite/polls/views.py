@@ -33,19 +33,19 @@ def search(request):
 
 
 def ad(request):
-    select = request.GET.get('status', 'not-read')
+    status = request.GET.get('status', 'not-read')
     site = request.GET.get('site', '')
-    if not site and not select:
+    if not site and not status:
         ad_list = Ad.objects.all()
-    elif not select:
+    elif not status:
         ad_list = Ad.objects.filter(site__web=site)
     elif not site:
-        ad_list = Ad.objects.filter(status=select)
+        ad_list = Ad.objects.filter(status=status)
     else:
-        ad_list = Ad.objects.filter(status=select, site__web=site)
+        ad_list = Ad.objects.filter(status=status, site__web=site)
     context = {
         'ad_list': ad_list,
-        'status': select,
+        'status': status,
         'site': site,
     }
     return render(request, 'ad.html', context)

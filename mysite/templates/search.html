@@ -15,6 +15,7 @@
                 <tr>
                    <th>Site</th>
                    <th>Sujet</th>
+                   <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,7 @@
                 <tr id="{{search.id}}">
                     <th class="site">{{search.web}}</th>
                     <td><a href="{{search.link_search}}" target="_blank">{{search.subject}}</a></td>
+                    <td><i class="fas fa-pen"></i> <i class="fas fa-trash-alt"></i></td>
                 </tr>
 {% endfor %}
             </tbody>
