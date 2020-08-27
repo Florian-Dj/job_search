@@ -142,3 +142,11 @@ table tbody tr {
 table td, table th {
   text-align: left;
 }
+
+
+a.button {
+    background-color: #fcf8e3;
+    border: 3px solid #2c3e50;
+    border-radius: 25px;
+    padding: 8px 12px;
+}

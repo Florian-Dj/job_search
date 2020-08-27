@@ -5,7 +5,7 @@
 {% block body %}
 <div class="title">
     <h3> Recherches : {{ search_list.count }}</h3>
-    <a href="adminpolls/search/add/" class="button" target="_blank">Ajouter</a>
+    <a href="adminpolls/search/add/" class="button" target="_blank"><i class="fas fa-plus-circle"></i> Ajouter</a>
 </div>
 
 <div class="wrap-table100">
@@ -20,7 +20,7 @@
             <tbody>
 {% for search in search_list %}
                 <tr id="{{search.id}}">
-                    <td class="site">{{search.web}}</td>
+                    <th class="site">{{search.web}}</th>
                     <td><a href="{{search.link_search}}" target="_blank">{{search.subject}}</a></td>
                 </tr>
 {% endfor %}
