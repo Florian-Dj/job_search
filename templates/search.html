@@ -1,0 +1,37 @@
+{% extends 'template.html' %}
+
+{% block title %} Recherches {% endblock %}
+
+{% block body %}
+<div class="title">
+    <h3> Recherches : {{ search_list.count }}</h3>
+    <a href="adminpolls/search/add/" class="button" target="_blank"><i class="fas fa-plus-circle"></i> Ajouter Recherches</a>
+</div>
+
+<div class="wrap-table100">
+    <div class="table100">
+        <table>
+            <thead>
+                <tr>
+                   <th>Site</th>
+                   <th>Sujet</th>
+                   <th></th>
+                </tr>
+            </thead>
+            <tbody>
+{% for search in search_list %}
+                <tr id="{{search.id}}">
+                    <th class="site">{{search.web}}</th>
+                    <td><a href="{{search.link_search}}" target="_blank">{{search.subject}}</a></td>
+                    <td class="search">
+                        <a href="adminpolls/search/{{search.id}}/change/" target="_blank"><i class="fas fa-pen" title="Modifier"></i></a>
+                        <a href="adminpolls/search/{{search.id}}/delete/" target="_blank"><i class="fas fa-trash-alt" title="Supprimer"></i></a>
+                    </td>
+                </tr>
+{% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
