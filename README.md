@@ -38,6 +38,7 @@ V0.1
 - Fichier option pour les temps de recharge
 
 ## Idées
-- Logo supprimer et modifier recherches
 - Ajouter d'autres site de recherche
+- Identifier les annonces déjà expirées
+- Mettre les annonces en inadéquate suivant des mots clef
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
