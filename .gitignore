@@ -1,10 +1,7 @@
-venv/*
-.idea/*
+.idea/
+__pycache__/
+build/
+dist/
+venv
+polls/migrations
 *.db
-__pycache__/*
-build/*
-dist/*
-*.spec
-*/*/__pycache__/*
-/polls/migrations/*
-*.db-journal
