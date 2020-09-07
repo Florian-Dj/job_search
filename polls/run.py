@@ -5,6 +5,9 @@ from sqlite3 import Error
 import requests
 from bs4 import BeautifulSoup
 
+title_word = ["stagiaire", "freelance", "stage"]
+description = ""
+
 
 def home():
     sql = """SELECT * FROM polls_search"""
@@ -34,9 +37,7 @@ def ep(result):
         title = ad.h2.text.replace("\n", "").capitalize()
         location = ad.find('p', class_="subtext").text.replace("\n", "")
         description = ad.find('p', class_="description").text.replace('"', "")
-        sql = """INSERT INTO polls_ad (site_id, title, description, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}", "{}")"""\
-            .format(result[0], title, description, location, link, "not-read")
-        injection_sql(conn, sql)
+        check_status(result[0], title, location, link, description, conn)
     db_close(conn)
 
 
@@ -49,9 +50,7 @@ def lk(result):
         link = ad.a['href'].split("?")[0]
         title = ad.h3.text.capitalize()
         location = ad.find('span', class_="job-result-card__location").text
-        sql = """INSERT INTO polls_ad (site_id, title, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}")"""\
-            .format(result[0], title, location, link, "not-read")
-        injection_sql(conn, sql)
+        check_status(result[0], title, location, link, description, conn)
     db_close(conn)
 
 
@@ -65,10 +64,18 @@ def lb(result):
         link = "{}{}".format("https://www.leboncoin.fr", ad.a['href'])
         title = ad.find("p", class_="_2tubl").text.capitalize()
         location = ad.find('p', class_="_2qeuk").text
-        sql = """INSERT INTO polls_ad (site_id, title, location, link, status) VALUES ({}, "{}", "{}", "{}", "{}")"""\
-            .format(result[0], title, location, link, "not-read")
-        injection_sql(conn, sql)
+        check_status(result[0], title, location, link, description, conn)
     db_close(conn)
+
+
+def check_status(site_id, title, location, link, description, conn):
+    if any(ele in title for ele in title_word):
+        status = "other"
+    else:
+        status = "not-read"
+    sql = """INSERT INTO polls_ad (site_id, title, location, description, link, status)
+            VALUES ({}, "{}", "{}", "{}", "{}", "{}")""".format(site_id, title, location, description, link, status)
+    injection_sql(conn, sql)
 
 
 def injection_sql(conn, sql):
@@ -84,7 +91,7 @@ def injection_sql(conn, sql):
 def db_connection():
     conn = None
     try:
-        conn = sqlite3.connect("data.db")
+        conn = sqlite3.connect("../data.db")
         conn.execute('PRAGMA foreign_keys = 1')
         return conn
     except Error as e:
@@ -109,3 +116,7 @@ def db_select(sql):
         return result
     except Error as e:
         print(e)
+
+
+if __name__ == '__main__':
+    home()
