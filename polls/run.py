@@ -5,7 +5,7 @@ from sqlite3 import Error
 import requests
 from bs4 import BeautifulSoup
 
-title_word = ["stagiaire", "freelance", "stage"]
+title_word = ["stagiaire", "freelance", "stage", "alternance"]
 description = ""
 
 
