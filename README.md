@@ -7,6 +7,15 @@ Application Web permettant d'avoir' les dernières offres d'emplois.
     - Requests >= 2.24.*
     - Django == 3.1
 
+## Installation
+####Linux
+```
+dnf install vim python3 git
+git clone https://github.com/Florian-Dj/job_search.git
+cd jobs_search
+chmod ug+x run.sh
+```
+
 ## Utilisation
 Simple d'utilisation, cette application web va vous permettre de ne pas rater une annonce dans vos recherches.
 
