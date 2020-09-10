@@ -8,17 +8,28 @@ Application Web permettant d'avoir' les dernières offres d'emplois.
     - Django == 3.1
 
 ## Installation
-####Linux
+###Linux
 ```
-dnf install vim python3 git
+dnf install vim python3.8 git screen firewalld
 git clone https://github.com/Florian-Dj/job_search.git
 cd jobs_search
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
 chmod ug+x run.sh
+```
+Si vous avez installé firewalld
+```
+firewall-cmd --zone=public --add-port=8000/tcp --permanent
+firewall-cmd --reload
 ```
 
 ## Utilisation
-Simple d'utilisation, cette application web va vous permettre de ne pas rater une annonce dans vos recherches.
-
+```
+cd job_search
+./run.sh
+```
+Vous pouvez vous lancer votre navigateur web avec l'url ip:8000
 
 ## Mise à jour
 **V0.3**
