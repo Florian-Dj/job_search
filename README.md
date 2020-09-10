@@ -8,7 +8,9 @@ Application Web permettant d'avoir' les dernières offres d'emplois.
     - Django == 3.1
 
 ## Installation
+
 ###Linux
+
 ```
 dnf install vim python3.8 git screen firewalld
 git clone https://github.com/Florian-Dj/job_search.git
