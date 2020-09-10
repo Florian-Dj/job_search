@@ -91,7 +91,7 @@ def injection_sql(conn, sql):
 def db_connection():
     conn = None
     try:
-        conn = sqlite3.connect("../data.db")
+        conn = sqlite3.connect("data.db")
         conn.execute('PRAGMA foreign_keys = 1')
         return conn
     except Error as e:

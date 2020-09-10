@@ -11,7 +11,7 @@ class Search(models.Model):
 
 class Ad(models.Model):
     objects = None
-    status_choice = [('not-read', 'Non Lu'), ('applied', 'Postulé'), ('inadequate', 'Inadéquate'), ('expired', 'Expiré')]
+    status_choice = [('not-read', 'Non Lu'), ('applied', 'Postulé'), ('inadequate', 'Inadéquate'), ('expired', 'Expiré'), ('other', 'Autres')]
     site = models.ForeignKey(Search, on_delete=models.CASCADE)
     title = models.CharField("Titre", max_length=255)
     description = models.TextField(null=True, blank=True)
