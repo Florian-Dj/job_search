@@ -30,13 +30,6 @@ V0.2
 - Possibilité de voir toutes les annonces du même status d'un site
 - Ajout d'une  colonne status dans la table annonce
 
-V0.1
-- Ajouter et supprimer des recherches
-- Liste des annonces et des recherches
-- Analyse des offres sur Pôle Emploi, Linkedin et Leboncoin
-- Alertes sonnore d'une nouvelle annonce
-- Fichier option pour les temps de recharge
-
 ## Idées
 - Ajouter d'autres site de recherche
 - Identifier les annonces déjà expirées
