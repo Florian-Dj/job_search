@@ -4,5 +4,4 @@ build/
 dist/
 venv
 polls/migrations
-*.db
 *.spec
