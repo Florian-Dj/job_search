@@ -43,6 +43,9 @@ Compte Super-Utilisateur:
 Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root.
 
 ## Mise à jour
+**V0.4**
+- Mettre les annonces en inadéquate suivant des mots clef
+
 **V0.3**
 - Pannel Web Django
 - Pannel Admin
@@ -55,14 +58,11 @@ Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root
 - Bouton pour chercher les nouvelles annonces
 - Changer les status des annonces sur la page admin
 
-V0.2
-- Ajout du status des annonces *(non lues, postulées, inadéquite, expirées)*
-- Ajout un sous menu dans les annonces *(non lue, postulée, expirée, inadéquate)*
-- Possibilité de voir toutes les annonces du même status d'un site
-- Ajout d'une  colonne status dans la table annonce
-
 ## Idées
 - Ajouter d'autres site de recherche
 - Identifier les annonces déjà expirées
-- Mettre les annonces en inadéquate suivant des mots clef
+- Page quand il y a plus de X annonces sur la page annonces
+- Ajouter des statistiques
+    - Par villes
+    - Pourcentages des stats
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
