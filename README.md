@@ -46,7 +46,7 @@ Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root
 **V0.4**
 - Mettre les annonces en inadéquate suivant des mots clef
 
-**V0.3**
+V0.3
 - Pannel Web Django
 - Pannel Admin
 - Page Accueil avec les statistiques des annonces
@@ -60,8 +60,8 @@ Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root
 
 ## Idées
 - Ajouter d'autres site de recherche
-- Identifier les annonces déjà expirées
-- Page quand il y a plus de X annonces sur la page annonces
+- Identifier les annonces déjà expirées *(niveau 1)*
+- Pages quant il y a plus de 250 annonces
 - Ajouter des statistiques
     - Par villes
     - Pourcentages des stats

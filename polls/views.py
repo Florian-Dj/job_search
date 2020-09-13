@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Search, Ad
-from . import run
+from . import scrape
 from django.db.models import Count
 
 
@@ -32,7 +32,7 @@ def search(request):
 
 def ad(request):
     if request.GET.get('ads', '') == "search":
-        run.home()
+        scrape.home()
     status = request.GET.get('status', 'not-read')
     site = request.GET.get('site', '')
     if not site and not status:
