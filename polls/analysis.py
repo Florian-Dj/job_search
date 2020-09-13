@@ -7,14 +7,16 @@ from bs4 import BeautifulSoup
 
 
 def home():
-    sql = """SELECT * FROM polls_ad WHERE status='not-read'"""
+    sql = """SELECT * FROM polls_ad
+        LEFT JOIN polls_search ON polls_ad.site_id = polls_search.id
+        WHERE status='not-read'"""
     results = db_select(sql)
     for result in results:
-        if result[5] == 11:
-            scrape_lk(result[4])
+        if result[10] == "Linkedin":
+            analysis_lk(result[4])
 
 
-def scrape_lk(url):
+def analysis_lk(url):
     req = requests.get(url)
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find('figcaption', class_="closed-job__flavor--closed")

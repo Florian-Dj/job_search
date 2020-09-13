@@ -6,6 +6,7 @@ from django.db.models import Count
 
 def index(request):
     all_ad = Ad.objects.all()
+    all_location = all_ad.values('location').annotate(dcount=Count('location'))
     all_status = all_ad.values('status').annotate(dcount=Count('status'))
     all_site = all_ad.values('site__web').annotate(dcount=Count('site__web'))
     all_pe = all_ad.values('status').annotate(dcount=Count('status')).filter(site__web='Pole-Emploi')
@@ -17,7 +18,8 @@ def index(request):
         'all_site': all_site,
         'all_pe': all_pe,
         'all_lb': all_lb,
-        'all_lk': all_lk
+        'all_lk': all_lk,
+        'all_location': all_location
     }
     return render(request, 'home.html', context)
 

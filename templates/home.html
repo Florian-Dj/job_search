@@ -8,6 +8,8 @@
     <h3> Statistiques Annonces</h3>
 </div>
 
+<p>{{ all_location }}</p>
+
 <div class="wrap-table100">
     <div class="table100">
         <table>
@@ -63,6 +65,27 @@
                     <td>{{ all_site.0.dcount }}</td>
                     <td>{{ all_ad.count }}</td>
                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="wrap-table100">
+    <div class="table100">
+        <table>
+            <thead>
+                <tr>
+                   <th>Ville</th>
+                   <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for city in all_location %}
+                <tr>
+                   <th>{{ city.location }}</th>
+                   <th>city.dcount</th>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
