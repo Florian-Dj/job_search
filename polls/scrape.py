@@ -69,7 +69,7 @@ def lb(result):
 
 
 def check_status(site_id, title, location, link, description, conn):
-    if any(ele in title for ele in title_word):
+    if any(ele in title.lower() for ele in title_word):
         status = "other"
     else:
         status = "not-read"
