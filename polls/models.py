@@ -1,9 +1,10 @@
 from django.db import models
 
+web_choices = [('Linkedin', 'Linkedin'), ('Pole-Emploi', 'Pôle-Emploi')]
+
 
 class Search(models.Model):
     objects = None
-    web_choices = [('Leboncoin', 'Leboncoin'), ('Linkedin', 'Linkedin'), ('Pole-Emploi', 'Pôle-Emploi')]
     web = models.CharField("Site", max_length=255, choices=web_choices)
     subject = models.CharField("Sujet", max_length=255, help_text="Nom du Post")
     link_search = models.CharField("Lien", max_length=255, unique=True)
@@ -18,3 +19,13 @@ class Ad(models.Model):
     location = models.CharField("Localisation", max_length=255)
     link = models.CharField("Lien", max_length=255, unique=True)
     status = models.CharField(max_length=255, choices=status_choice)
+
+
+class Stat(models.Model):
+    web = models.CharField("Site", max_length=255, null=True, unique=True)
+    not_read = models.IntegerField("Non lue", default=0)
+    applied = models.IntegerField("Postulé", default=0)
+    inadequate = models.IntegerField("Inadéquate", default=0)
+    expired = models.IntegerField("Expiré", default=0)
+    other = models.IntegerField("Autres", default=0)
+    total = models.IntegerField("Total", default=0)

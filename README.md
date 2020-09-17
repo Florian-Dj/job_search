@@ -72,3 +72,4 @@ V0.3
 - Filtre par Villes/Régions
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
 - Ajouter une date pour les annonces *(ajout et mise à jour)*
+- Stocker toute la description de l'annonce
