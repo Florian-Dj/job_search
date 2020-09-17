@@ -17,12 +17,12 @@ def home():
 
 
 def parse(result):
-    if result[3] == "Pole-Emploi":
+    if result[1] == "Pole-Emploi":
         ep(result)
-    elif result[3] == "Linkedin":
+    elif result[1] == "Linkedin":
         lk(result)
     else:
-        print("Error")
+        print("Error - {}".format(result))
 
 
 def ep(result):
@@ -81,7 +81,7 @@ def injection_sql(conn, sql):
         data = conn.cursor()
         data.execute(sql)
     except conn.IntegrityError:
-        pass
+        return "update"
     except conn.Error as e:
         print(e)
 
@@ -137,7 +137,12 @@ def data_status():
         sql = """INSERT INTO polls_stat (web, not_read, applied, inadequate, expired, other, total)
                 VALUES ('{}', {}, {}, {}, {}, {}, {})"""\
         .format(data, list_web[data]["not-read"], list_web[data]["applied"], list_web[data]["inadequate"], list_web[data]["expired"], list_web[data]["other"], total)
-        injection_sql(conn, sql)
+        insert = injection_sql(conn, sql)
+        if insert == "update":
+            sql = """UPDATE polls_stat SET not_read={}, applied={}, inadequate={}, expired={}, other={}, total={}
+                    WHERE web = '{}'"""\
+                .format(list_web[data]["not-read"], list_web[data]["applied"], list_web[data]["inadequate"], list_web[data]["expired"], list_web[data]["other"], total, data)
+            injection_sql(conn, sql)
     db_close(conn)
 
 
