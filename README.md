@@ -65,4 +65,8 @@ V0.3
 - Ajouter des statistiques
     - Par villes
     - Pourcentages des stats
+- Formulaire de contact
+- Refaire le CSS (agrandir la page, fixer la navbar)
+- Filtre par Villes/Régions
+- Ajouter un Footer
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*

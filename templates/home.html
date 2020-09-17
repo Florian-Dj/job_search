@@ -8,84 +8,44 @@
     <h3> Statistiques Annonces</h3>
 </div>
 
-<p>{{ all_location }}</p>
-
 <div class="wrap-table100">
     <div class="table100">
         <table>
             <thead>
                 <tr>
-                   <th>Status</th>
-                   <th>Pôle-Emploi</th>
-                   <th>Linkedin</th>
-                   <th>Leboncoin</th>
+                    <th>Status</th>
+                    <th>Non-lu</th>
+                    <th>Inadéquate</th>
+                    <th>Expiré</th>
+                    <th>Postulé</th>
+                    <th>Autres</th>
                    <th>Total</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th>Non-lu</th>
-                    <td>{{ all_pe.3.dcount }}</td>
-                    <td>{{ all_lk.3.dcount }}</td>
-                    <td>{{ all_lb.3.dcount }}</td>
-                    <td>{{ all_status.3.dcount }}</td>
+                    <th>Pôle-Emploi</th>
+                    <td>{{ all_site.2.0 }}</td>
+                    <td>{{ all_site.1.0 }}</td>
+                    <td>{{ all_site.1.0 }}</td>
+                    <td>{{ all_site.1.0 }}</td>
+                    <td>{{ all_site.1.0 }}</td>
                 </tr>
                 <tr>
-                    <th>Inadéquate</th>
+                   <th>Linkedin</th>
                     <td>{{ all_pe.2.dcount }}</td>
                     <td>{{ all_lk.2.dcount }}</td>
-                    <td>{{ all_lb.2.dcount }}</td>
                     <td>{{ all_status.2.dcount }}</td>
                 </tr>
                 <tr>
-                    <th>Expiré</th>
-                    <td>{{ all_pe.1.dcount }}</td>
-                    <td>{{ all_lk.1.dcount }}</td>
-                    <td>{{ all_lb.1.dcount }}</td>
-                    <td>{{ all_status.1.dcount }}</td>
-                </tr>
-                <tr>
-                    <th>Postulé</th>
-                    <td>{{ all_pe.0.dcount }}</td>
-                    <td>{{ all_lk.0.dcount }}</td>
-                    <td>{{ all_lb.0.dcount }}</td>
-                    <td>{{ all_status.0.dcount }}</td>
-                </tr>
-                <tr>
-                    <th>Autres</th>
-                    <td>{{ all_pe.4.dcount }}</td>
-                    <td>{{ all_lk.4.dcount }}</td>
-                    <td>{{ all_lb.4.dcount }}</td>
-                    <td>{{ all_status.4.dcount }}</td>
-                </tr>
-                <tr>
                     <th>Total</th>
-                    <td>{{ all_site.2.dcount }}</td>
-                    <td>{{ all_site.1.dcount }}</td>
-                    <td>{{ all_site.0.dcount }}</td>
+                    <td>{{ all_status.0.dcount }}</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>{{ all_status.1.dcount }}</td>
                     <td>{{ all_ad.count }}</td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="wrap-table100">
-    <div class="table100">
-        <table>
-            <thead>
-                <tr>
-                   <th>Ville</th>
-                   <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for city in all_location %}
-                <tr>
-                   <th>{{ city.location }}</th>
-                   <th>city.dcount</th>
-                </tr>
-                {% endfor %}
             </tbody>
         </table>
     </div>

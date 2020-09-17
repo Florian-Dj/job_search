@@ -21,8 +21,8 @@
             <tbody>
 {% for search in search_list %}
                 <tr id="{{search.id}}">
-                    <th class="site">{{search.web}}</th>
-                    <td><a href="{{search.link_search}}" target="_blank">{{search.subject}}</a></td>
+                    <th class="site">{{search.subject}}</th>
+                    <td><a href="{{search.link_search}}" target="_blank">{{search.web}}</a></td>
                     <td class="search">
                         <a href="adminpolls/search/{{search.id}}/change/" target="_blank"><i class="fas fa-pen" title="Modifier"></i></a>
                         <a href="adminpolls/search/{{search.id}}/delete/" target="_blank"><i class="fas fa-trash-alt" title="Supprimer"></i></a>
