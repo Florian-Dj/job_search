@@ -1,18 +1,24 @@
 body {
     padding: 0;
     margin: auto;
-    width: 75%;
+    width: 80%;
     background-color: #fcf8e3;
 	font-family: sans-serif;
 }
 
 nav.primary-navigation {
+  width: 80%;
   margin: 0 auto;
   display: block;
-  padding: 15px 0 15px 0;
+  padding: 12px 0 12px 0;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background-color: #2c3e50;
+  position: -webkit-sticky;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  border-radius: 0 0 10px 10px;
 }
 
 nav.primary-navigation ul {
@@ -24,7 +30,7 @@ nav.primary-navigation ul li {
   list-style: none;
   margin: 0 auto;
   display: inline-block;
-  padding: 10px 50px;
+  padding: 8px 45px;
   position: relative;
   text-decoration: none;
   text-align: center;
@@ -48,7 +54,7 @@ a {
 
 
 section {
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 div.title{
@@ -78,7 +84,7 @@ form#site select{
 
 
 .wrap-table100 {
-  width: 85%;
+  width: 90%;
   margin: 25px auto;
 }
 
@@ -91,6 +97,13 @@ table {
   width: 100%;
   margin: 0 auto;
   position: relative;
+}
+
+table thead{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 60px;
+    z-index: 2;
 }
 
 table * {position: relative;}
@@ -140,7 +153,7 @@ table tbody tr {
 }
 
 table td, table th {
-  text-align: left;
+  text-align: center;
 }
 
 
