@@ -45,8 +45,9 @@ Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root
 ## Mise à jour
 **V0.4**
 - Mettre les annonces en inadéquate suivant des mots clef
-- Refaire le CSS (agrandir la page, fixer la navbar)
+- Refaire le CSS *(agrandir la page, fixer la navbar)*
 - Suppression des offres Leboncoin
+- Ajouter un Footer
 
 V0.3
 - Pannel Web Django
@@ -63,7 +64,6 @@ V0.3
 ## Idées
 - Identifier les annonces déjà expirées *(niveau 1)*
 - Limite de 250 annonces
-- Ajouter un Footer
 - Ajouter d'autres site de recherche
 - Ajouter des statistiques
     - Par villes
@@ -71,3 +71,4 @@ V0.3
 - Formulaire de contact
 - Filtre par Villes/Régions
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
+- Ajouter une date pour les annonces *(ajout et mise à jour)*
