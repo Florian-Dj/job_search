@@ -1,21 +1,15 @@
 from django.shortcuts import render
-from .models import Search, Ad
+from .models import Search, Ad, Stat
 from . import scrape
-from django.db.models import Count
+from django.db.models import Sum, Subquery
 
 
 def index(request):
-    all_ad = Ad.objects.all()
-    all_location = all_ad.values('location').annotate(dcount=Count('location'))
-    all_status = all_ad.values('status').annotate(dcount=Count('status'))
-    all_site = all_ad.values('site__subject')\
-        .annotate(dcount=Count('site__subject'))\
-        .order_by('status').values_list("dcount", "status", "site__subject")
+    all_stat = Stat.objects.all()
+    total_stat = all_stat.aggregate(Sum('not_read'), Sum('applied'), Sum('inadequate'), Sum('expired'), Sum('other'), Sum('total'))
     context = {
-        'all_ad': all_ad,
-        'all_status': all_status,
-        'all_site': all_site,
-        'all_location': all_location,
+        'all_stat': all_stat,
+        'total_stat': total_stat,
     }
     return render(request, 'home.html', context)
 

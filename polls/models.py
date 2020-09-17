@@ -22,6 +22,7 @@ class Ad(models.Model):
 
 
 class Stat(models.Model):
+    objects = None
     web = models.CharField("Site", max_length=255, null=True, unique=True)
     not_read = models.IntegerField("Non lue", default=0)
     applied = models.IntegerField("Postulé", default=0)
