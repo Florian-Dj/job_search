@@ -23,8 +23,6 @@ def search(request):
 
 
 def ad(request):
-    if request.GET.get('ads', '') == "search":
-        scrape.home()
     status = request.GET.get('status', 'not-read')
     site = request.GET.get('site', '')
     if not site and not status:

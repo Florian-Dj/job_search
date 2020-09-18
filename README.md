@@ -66,11 +66,12 @@ V0.3
 
 ## Idées
 - Ajouter d'autres site de recherche
+- Faire un fichier d'options pour les mot clef inadéquate
+- Formulaire de contact
+- Stocker toute la description de l'annonce
+- Ajouter une date pour les annonces *(ajout et mise à jour)*
+- Ajouter plus de statistiques
     - Par villes
     - Pourcentages des stats
-- Formulaire de contact
 - Filtre par Villes/Régions
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
-- Ajouter une date pour les annonces *(ajout et mise à jour)*
-- Stocker toute la description de l'annonce
-- Faire un fichier d'options pour les mot clef inadéquate
