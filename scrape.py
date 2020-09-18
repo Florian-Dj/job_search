@@ -2,7 +2,7 @@
 
 import requests
 from bs4 import BeautifulSoup
-import polls.database as db
+import database as db
 
 title_word = ["stagiaire", "freelance", "stage", "alternance"]
 description = ""
@@ -16,9 +16,9 @@ def select_search():
 
 
 def parse(result):
-    if result[1] == "Pole-Emploi":
+    if result[3] == "Pole-Emploi":
         ep(result)
-    elif result[1] == "Linkedin":
+    elif result[3] == "Linkedin":
         lk(result)
     else:
         print("Error - {}".format(result))

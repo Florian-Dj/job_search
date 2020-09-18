@@ -2,8 +2,8 @@
 
 import requests
 from bs4 import BeautifulSoup
-import polls.scrape
-import polls.database as db
+import scrape
+import database as db
 
 
 def select_ads():
@@ -13,13 +13,12 @@ def select_ads():
     results = db.db_select(sql)
     conn = db.db_connection()
     for result in results:
-        print(result[4])
         if result[8] == "Linkedin":
             analysis_lk(result[4], result[0], conn)
         elif result[8] == "Pole-Emploi":
             analysis_pe(result[4], result[0], conn)
     db.db_close(conn)
-    polls.scrape.data_status()
+    scrape.data_status()
 
 
 def analysis_lk(url, id_ad, conn):

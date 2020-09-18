@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from .models import Search, Ad, Stat
-from . import scrape
 from django.db.models import Sum
 
 
