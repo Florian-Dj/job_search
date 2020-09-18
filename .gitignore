@@ -5,3 +5,4 @@ dist/
 venv
 polls/migrations
 *.spec
+*.db

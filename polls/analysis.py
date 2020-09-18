@@ -4,6 +4,7 @@ import sqlite3
 from sqlite3 import Error
 import requests
 from bs4 import BeautifulSoup
+import polls.scrape
 
 
 def home():
@@ -11,19 +12,23 @@ def home():
         LEFT JOIN polls_search ON polls_ad.site_id = polls_search.id
         WHERE status='not-read'"""
     results = db_select(sql)
+    conn = db_connection()
+    print("Analyse de {} annonces non lues".format(len(results)))
     for result in results:
-        if result[10] == "Linkedin":
-            analysis_lk(result[4])
+        if result[8] == "Linkedin":
+            analysis_lk(result[4], result[0], conn)
+    db_close(conn)
+    polls.scrape.data_status()
 
 
-def analysis_lk(url):
+def analysis_lk(url, id_ad, conn):
     req = requests.get(url)
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find('figcaption', class_="closed-job__flavor--closed")
     if ads:
-        print("Annonce Expiré !", url)
-    else:
-        print("Annonce Bonne", url)
+        sql = """UPDATE polls_ad SET status='expired' WHERE id={}""".format(id_ad)
+        injection_sql(conn, sql)
+        print(sql)
 
 
 def db_connection():
@@ -45,6 +50,22 @@ def db_select(sql):
         result = c.fetchall()
         return result
     except Error as e:
+        print(e)
+
+
+def injection_sql(conn, sql):
+    try:
+        data = conn.cursor()
+        data.execute(sql)
+    except conn.Error as e:
+        print(e)
+
+
+def db_close(conn):
+    try:
+        conn.commit()
+        conn.close()
+    except conn.Error as e:
         print(e)
 
 
