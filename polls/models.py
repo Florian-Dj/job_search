@@ -1,6 +1,8 @@
 from django.db import models
 
 web_choices = [('Linkedin', 'Linkedin'), ('Pole-Emploi', 'Pôle-Emploi')]
+status_choice = [('not-read', 'Non Lu'), ('applied', 'Postulé'), ('inadequate', 'Inadéquate'),
+                 ('expired', 'Expiré'), ('other', 'Autres')]
 
 
 class Search(models.Model):
@@ -12,7 +14,6 @@ class Search(models.Model):
 
 class Ad(models.Model):
     objects = None
-    status_choice = [('not-read', 'Non Lu'), ('applied', 'Postulé'), ('inadequate', 'Inadéquate'), ('expired', 'Expiré'), ('other', 'Autres')]
     site = models.ForeignKey(Search, on_delete=models.CASCADE)
     title = models.CharField("Titre", max_length=255)
     description = models.TextField(null=True, blank=True)
@@ -23,10 +24,17 @@ class Ad(models.Model):
 
 class Stat(models.Model):
     objects = None
-    web = models.CharField("Site", max_length=255, null=True, unique=True)
+    web = models.CharField("Site", max_length=255, unique=True)
     not_read = models.IntegerField("Non lue", default=0)
     applied = models.IntegerField("Postulé", default=0)
     inadequate = models.IntegerField("Inadéquate", default=0)
     expired = models.IntegerField("Expiré", default=0)
     other = models.IntegerField("Autres", default=0)
     total = models.IntegerField("Total", default=0)
+
+
+for web in web_choices:
+    try:
+        Stat.objects.create(web=web)
+    except:
+        pass
