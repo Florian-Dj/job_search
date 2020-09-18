@@ -2,8 +2,7 @@
 
 import requests
 from bs4 import BeautifulSoup
-import scrape
-import database as db
+import scrape, database as db
 
 
 def select_ads():

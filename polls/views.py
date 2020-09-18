@@ -27,11 +27,11 @@ def ad(request):
     if not site and not status:
         ad_list = Ad.objects.all()
     elif not status:
-        ad_list = Ad.objects.filter(site__subject=site)
+        ad_list = Ad.objects.filter(site__web=site)
     elif not site:
         ad_list = Ad.objects.filter(status=status)
     else:
-        ad_list = Ad.objects.filter(status=status, site__subject=site)
+        ad_list = Ad.objects.filter(status=status, site__web=site)
     context = {
         'ad_list': ad_list,
         'status': status,
