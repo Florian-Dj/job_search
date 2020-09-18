@@ -44,7 +44,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for ad in ad_list %}
+                {% for ad in ad_list|slice:":100" %}
                 <tr id="{{ ad.id }}">
                     <td>
                         <a style="color: black" href="adminpolls/ad/{{ ad.id }}/change/" target="_blank" title="Modifier">

@@ -97,6 +97,7 @@ table {
   width: 100%;
   margin: 0 auto;
   position: relative;
+  margin-bottom: 75px;
 }
 
 table thead{
