@@ -45,6 +45,7 @@ Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root
 ## Mise à jour
 **V0.4**
 - Suppression des offres Leboncoin
+- Identifier les annonces expirées *(niveau 1)*
 - Refonte des statistiques
 - Annonces en inadéquate suivant des mots clefs dans une liste
 - Limite de 100 annonces sur la page
@@ -64,7 +65,6 @@ V0.3
 - Changer les status des annonces sur la page admin
 
 ## Idées
-- Identifier les annonces expirées *(niveau 1)*
 - Ajouter d'autres site de recherche
     - Par villes
     - Pourcentages des stats

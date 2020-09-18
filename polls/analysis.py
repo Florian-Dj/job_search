@@ -17,6 +17,8 @@ def home():
     for result in results:
         if result[8] == "Linkedin":
             analysis_lk(result[4], result[0], conn)
+        elif result[8] == "Pole-Emploi":
+            analysis_pe(result[4], result[0], conn)
     db_close(conn)
     polls.scrape.data_status()
 
@@ -28,7 +30,15 @@ def analysis_lk(url, id_ad, conn):
     if ads:
         sql = """UPDATE polls_ad SET status='expired' WHERE id={}""".format(id_ad)
         injection_sql(conn, sql)
-        print(sql)
+
+
+def analysis_pe(url, id_ad, conn):
+    req = requests.get(url)
+    soup = BeautifulSoup(req.content, "html.parser")
+    ads = soup.find('meta', content='Offre non disponible')
+    if ads:
+        sql = """UPDATE polls_ad SET status='expired' WHERE id={}""".format(id_ad)
+        injection_sql(conn, sql)
 
 
 def db_connection():
