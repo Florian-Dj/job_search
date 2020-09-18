@@ -20,7 +20,7 @@ chmod ug+x run.sh
 ```
 Il faut ajouter l'Ip de votre machine dans les options de django
 ```
-vim /ton/chemin/job_search/admin/settings.py
+vim /home/projet/job_search/admin/settings.py
 ALLOWED_HOSTS = ['Your-IP']
 ```
 Si vous avez installé firewalld
@@ -31,7 +31,7 @@ firewall-cmd --reload
 
 ## Utilisation
 ```
-cd /ton/chemin/job_search
+cd /home/projet/job_search
 sh run.sh
 ```
 Vous pouvez lancer votre navigateur web avec l'url ip:8000

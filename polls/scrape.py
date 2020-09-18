@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 
-import sqlite3
-from sqlite3 import Error
 import requests
 from bs4 import BeautifulSoup
+import polls.database as db
 
 title_word = ["stagiaire", "freelance", "stage", "alternance"]
 description = ""
 
 
-def home():
+def select_search():
     sql = """SELECT * FROM polls_search"""
-    results = db_select(sql)
+    results = db.db_select(sql)
     for result in results:
         parse(result)
 
@@ -29,27 +28,27 @@ def ep(result):
     req = requests.get(result[2])
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="result")
-    conn = db_connection()
+    conn = db.db_connection()
     for ad in ads:
         link = "{}{}".format("https://candidat.pole-emploi.fr", ad.a['href'])
         title = ad.h2.text.replace("\n", "").capitalize()
         location = ad.find('p', class_="subtext").text.replace("\n", "")
         description = ad.find('p', class_="description").text.replace('"', "")
         check_status(result[0], title, location, link, description, conn)
-    db_close(conn)
+    db.db_close(conn)
 
 
 def lk(result):
     req = requests.get(result[2])
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="result-card")
-    conn = db_connection()
+    conn = db.db_connection()
     for ad in ads:
         link = ad.a['href'].split("?")[0]
         title = ad.h3.text.capitalize()
         location = ad.find('span', class_="job-result-card__location").text
         check_status(result[0], title, location, link, description, conn)
-    db_close(conn)
+    db.db_close(conn)
 
 
 def lb(result):
@@ -57,13 +56,13 @@ def lb(result):
     req = requests.get(result[2], headers=headers)
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="_3DFQ-")
-    conn = db_connection()
+    conn = db.db_connection()
     for ad in ads:
         link = "{}{}".format("https://www.leboncoin.fr", ad.a['href'])
         title = ad.find("p", class_="_2tubl").text.capitalize()
         location = ad.find('p', class_="_2qeuk").text
         check_status(result[0], title, location, link, description, conn)
-    db_close(conn)
+    db. db_close(conn)
 
 
 def check_status(site_id, title, location, link, description, conn):
@@ -73,52 +72,12 @@ def check_status(site_id, title, location, link, description, conn):
         status = "not-read"
     sql = """INSERT INTO polls_ad (site_id, title, location, description, link, status)
             VALUES ({}, "{}", "{}", "{}", "{}", "{}")""".format(site_id, title, location, description, link, status)
-    injection_sql(conn, sql)
-
-
-def injection_sql(conn, sql):
-    try:
-        data = conn.cursor()
-        data.execute(sql)
-    except conn.IntegrityError:
-        return "update"
-    except conn.Error as e:
-        print(e)
-
-
-def db_connection():
-    conn = None
-    try:
-        conn = sqlite3.connect("../data.db")
-        conn.execute('PRAGMA foreign_keys = 1')
-        return conn
-    except Error as e:
-        print(e)
-    return conn
-
-
-def db_close(conn):
-    try:
-        conn.commit()
-        conn.close()
-    except conn.Error as e:
-        print(e)
-
-
-def db_select(sql):
-    try:
-        conn = db_connection()
-        c = conn.cursor()
-        c.execute(sql)
-        result = c.fetchall()
-        return result
-    except Error as e:
-        print(e)
+    db.injection_sql(conn, sql)
 
 
 def data_status():
     sql = """SELECT subject FROM polls_search GROUP BY subject"""
-    results = db_select(sql)
+    results = db.db_select(sql)
     list_web = {}
     for result in results:
         list_web[result[0]] = {}
@@ -128,24 +87,24 @@ def data_status():
     sql = """SELECT status, COUNT(status), polls_search.subject FROM polls_ad
         LEFT JOIN polls_search ON polls_ad.site_id = polls_search.id
         GROUP BY status, polls_search.subject"""
-    results = db_select(sql)
+    results = db.db_select(sql)
     for result in results:
         list_web[result[2]][result[0]] = result[1]
-    conn = db_connection()
+    conn = db.db_connection()
     for data in list_web:
         total = list_web[data]["not-read"] + list_web[data]["applied"] + list_web[data]["inadequate"] + list_web[data]["expired"] + list_web[data]["other"]
         sql = """INSERT INTO polls_stat (web, not_read, applied, inadequate, expired, other, total)
                 VALUES ('{}', {}, {}, {}, {}, {}, {})"""\
         .format(data, list_web[data]["not-read"], list_web[data]["applied"], list_web[data]["inadequate"], list_web[data]["expired"], list_web[data]["other"], total)
-        insert = injection_sql(conn, sql)
+        insert = db.injection_sql(conn, sql)
         if insert == "update":
             sql = """UPDATE polls_stat SET not_read={}, applied={}, inadequate={}, expired={}, other={}, total={}
                     WHERE web = '{}'"""\
                 .format(list_web[data]["not-read"], list_web[data]["applied"], list_web[data]["inadequate"], list_web[data]["expired"], list_web[data]["other"], total, data)
-            injection_sql(conn, sql)
-    db_close(conn)
+            db.injection_sql(conn, sql)
+    db.db_close(conn)
 
 
 if __name__ == '__main__':
-    home()
+    select_search()
     data_status()
