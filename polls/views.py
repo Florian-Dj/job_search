@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Search, Ad, Stat
 from . import scrape
-from django.db.models import Sum, Subquery
+from django.db.models import Sum
 
 
 def index(request):
@@ -30,11 +30,11 @@ def ad(request):
     if not site and not status:
         ad_list = Ad.objects.all()
     elif not status:
-        ad_list = Ad.objects.filter(site__web=site)
+        ad_list = Ad.objects.filter(site__subject=site)
     elif not site:
         ad_list = Ad.objects.filter(status=status)
     else:
-        ad_list = Ad.objects.filter(status=status, site__web=site)
+        ad_list = Ad.objects.filter(status=status, site__subject=site)
     context = {
         'ad_list': ad_list,
         'status': status,

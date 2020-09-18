@@ -63,7 +63,7 @@ V0.3
 - Changer les status des annonces sur la page admin
 
 ## Idées
-- Identifier les annonces déjà expirées *(niveau 1)*
+- Identifier les annonces expirées *(niveau 1)*
 - Limite de 250 annonces sur la page
 - Ajouter d'autres site de recherche
     - Par villes

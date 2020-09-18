@@ -208,5 +208,6 @@ footer {
 }
 
 footer span {
-    margin-left: 250px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
