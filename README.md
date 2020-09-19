@@ -34,11 +34,8 @@ firewall-cmd --reload
 cd /home/projet/job_search
 sh run.sh
 ```
+Renseignez bien un compte de superuser au premier lancement du fichier 'run.sh'
 Vous pouvez lancer votre navigateur web avec l'url ip:8000
-
-Compte Super-Utilisateur:
-- Nom d’utilisateur : root
--  Mot de passe : toortoor
 
 Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root.
 
