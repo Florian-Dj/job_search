@@ -6,7 +6,6 @@ status_choice = [('not-read', 'Non Lu'), ('applied', 'Postulé'), ('inadequate',
 
 
 class Search(models.Model):
-    print("Here")
     objects = None
     web = models.CharField("Site", max_length=255, choices=web_choices)
     subject = models.CharField("Sujet", max_length=255, help_text="Nom du Post")
