@@ -13,7 +13,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Status</th>
+                    <th>Web</th>
                     <th>Non-lu</th>
                     <th>Inadéquate</th>
                     <th>Expiré</th>
@@ -23,32 +23,34 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                   <th>Linkedin</th>
-                    <td>{{ all_stat.0.not_read }}</td>
-                    <td>{{ all_stat.0.inadequate }}</td>
-                    <td>{{ all_stat.0.expired }}</td>
-                    <td>{{ all_stat.0.applied }}</td>
-                    <td>{{ all_stat.0.other }}</td>
-                    <td>{{ all_stat.0.total }}</td>
-                </tr>
-                <tr>
-                    <th>Pôle-Emploi</th>
-                    <td>{{ all_stat.1.not_read }}</td>
-                    <td>{{ all_stat.1.inadequate }}</td>
-                    <td>{{ all_stat.1.expired }}</td>
-                    <td>{{ all_stat.1.applied }}</td>
-                    <td>{{ all_stat.1.other }}</td>
-                    <td>{{ all_stat.1.total }}</td>
-                </tr>
+                {% for stat in all_stat %}
+                    <tr>
+                        <th>{{ stat.web }}</th>
+                        <td>{{ stat.not_read }}</td>
+                        <td>{{ stat.inadequate }}</td>
+                        <td>{{ stat.expired }}</td>
+                        <td>{{ stat.applied }}</td>
+                        <td>{{ stat.other }}</td>
+                        <td>{{ stat.total }}</td>
+                    </tr>
+                {% endfor %}
                 <tr>
                     <th>Total</th>
-                    <td>{{ total_stat.not_read__sum }}</td>
-                    <td>{{ total_stat.inadequate__sum }}</td>
-                    <td>{{ total_stat.expired__sum }}</td>
-                    <td>{{ total_stat.applied__sum }}</td>
-                    <td>{{ total_stat.other__sum }}</td>
-                    <td>{{ total_stat.total__sum }}</td>
+                    {% if all_stat %}
+                        <td>{{ total_stat.not_read__sum }}</td>
+                        <td>{{ total_stat.inadequate__sum }}</td>
+                        <td>{{ total_stat.expired__sum }}</td>
+                        <td>{{ total_stat.applied__sum }}</td>
+                        <td>{{ total_stat.other__sum }}</td>
+                        <td>{{ total_stat.total__sum }}</td>
+                    {% else %}
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    {% endif %}
                 </tr>
             </tbody>
         </table>
