@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 
 
 def check_db():
     if not os.path.isfile('data.db'):
-        f = open('data.db', "w")
-        f.close()
-        os.system('python manage.py migrate')
+        if sys.platform != "win32":
+            os.system('cp data_default.db data.db')
+        else:
+            print("Il manque le fichier data.db")
 
 
 if __name__ == '__main__':

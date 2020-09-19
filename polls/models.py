@@ -6,6 +6,7 @@ status_choice = [('not-read', 'Non Lu'), ('applied', 'Postulé'), ('inadequate',
 
 
 class Search(models.Model):
+    print("Here")
     objects = None
     web = models.CharField("Site", max_length=255, choices=web_choices)
     subject = models.CharField("Sujet", max_length=255, help_text="Nom du Post")
@@ -31,10 +32,3 @@ class Stat(models.Model):
     expired = models.IntegerField("Expiré", default=0)
     other = models.IntegerField("Autres", default=0)
     total = models.IntegerField("Total", default=0)
-
-
-for web in web_choices:
-    try:
-        Stat.objects.create(web=web)
-    except:
-        pass

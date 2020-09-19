@@ -16,16 +16,16 @@ def select_search():
 
 
 def parse(result):
-    if result[3] == "Pole-Emploi":
+    if result[1] == "Pole-Emploi":
         ep(result)
-    elif result[3] == "Linkedin":
+    elif result[1] == "Linkedin":
         lk(result)
     else:
         print("Error - {}".format(result))
 
 
 def ep(result):
-    req = requests.get(result[2])
+    req = requests.get(result[3])
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="result")
     conn = db.db_connection()
@@ -39,7 +39,7 @@ def ep(result):
 
 
 def lk(result):
-    req = requests.get(result[2])
+    req = requests.get(result[3])
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="result-card")
     conn = db.db_connection()
@@ -49,20 +49,6 @@ def lk(result):
         location = ad.find('span', class_="job-result-card__location").text
         check_status(result[0], title, location, link, description, conn)
     db.db_close(conn)
-
-
-def lb(result):
-    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-    req = requests.get(result[2], headers=headers)
-    soup = BeautifulSoup(req.content, "html.parser")
-    ads = soup.find_all('li', class_="_3DFQ-")
-    conn = db.db_connection()
-    for ad in ads:
-        link = "{}{}".format("https://www.leboncoin.fr", ad.a['href'])
-        title = ad.find("p", class_="_2tubl").text.capitalize()
-        location = ad.find('p', class_="_2qeuk").text
-        check_status(result[0], title, location, link, description, conn)
-    db. db_close(conn)
 
 
 def check_status(site_id, title, location, link, description, conn):
