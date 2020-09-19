@@ -4,7 +4,7 @@ from django.db.models import Sum
 
 
 def index(request):
-    all_stat = Stat.objects.all()
+    all_stat = Stat.objects.all().order_by('web')
     total_stat = all_stat.aggregate(Sum('not_read'), Sum('applied'), Sum('inadequate'), Sum('expired'), Sum('other'), Sum('total'))
     context = {
         'all_stat': all_stat,

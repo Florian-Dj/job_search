@@ -10,14 +10,15 @@ def select_ads():
         LEFT JOIN polls_search ON polls_ad.site_id = polls_search.id
         WHERE status='not-read'"""
     results = db.db_select(sql)
-    conn = db.db_connection()
-    for result in results:
-        if result[8] == "Linkedin":
-            analysis_lk(result[4], result[0], conn)
-        elif result[8] == "Pole-Emploi":
-            analysis_pe(result[4], result[0], conn)
-    db.db_close(conn)
-    scrape.data_status()
+    if results:
+        conn = db.db_connection()
+        for result in results:
+            if result[8] == "Linkedin":
+                analysis_lk(result[4], result[0], conn)
+            elif result[8] == "Pole-Emploi":
+                analysis_pe(result[4], result[0], conn)
+        db.db_close(conn)
+        scrape.data_status()
 
 
 def analysis_lk(url, id_ad, conn):

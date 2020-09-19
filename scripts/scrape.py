@@ -11,8 +11,9 @@ description = ""
 def select_search():
     sql = """SELECT * FROM polls_search"""
     results = db.db_select(sql)
-    for result in results:
-        parse(result)
+    if results:
+        for result in results:
+            parse(result)
 
 
 def parse(result):
