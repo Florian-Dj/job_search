@@ -3,7 +3,6 @@
 import requests
 from bs4 import BeautifulSoup
 import scrape, database as db
-import time
 
 
 def select_ads():
@@ -14,7 +13,6 @@ def select_ads():
     if results:
         conn = db.db_connection()
         for result in results:
-            print(result)
             if result[2] == "Linkedin":
                 analysis_lk(result[1], result[0], conn)
             elif result[2] == "Pole-Emploi":
