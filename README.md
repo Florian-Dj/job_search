@@ -8,6 +8,7 @@ Application Web permettant d'avoir' les dernières offres d'emplois.
     - Django == 3.1
 
 ## Installation
+
 ###Linux
 ```
 dnf install vim python3.8 git screen firewalld
@@ -27,6 +28,12 @@ Si vous avez installé firewalld
 ```
 firewall-cmd --zone=public --add-port=8000/tcp --permanent
 firewall-cmd --reload
+```
+
+## Crontab
+```
+*/15 * * * * cd /home/projet/job_search/scripts && ../env/bin/python3 scrape.py
+*/25 * * * * cd /home/projet/job_search/scripts && ../env/bin/python3 analysis.py
 ```
 
 ## Utilisation
@@ -74,3 +81,4 @@ V0.3
     - Pourcentages des stats
 - Filtre par Villes/Régions
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
+- Log backup et crontab
