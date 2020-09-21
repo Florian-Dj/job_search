@@ -3,20 +3,22 @@
 import requests
 from bs4 import BeautifulSoup
 import scrape, database as db
+import time
 
 
 def select_ads():
-    sql = """SELECT * FROM polls_ad
+    sql = """SELECT polls_ad.id, polls_ad.link, polls_search.web  FROM polls_ad
         LEFT JOIN polls_search ON polls_ad.site_id = polls_search.id
         WHERE status='not-read'"""
     results = db.db_select(sql)
     if results:
         conn = db.db_connection()
         for result in results:
-            if result[8] == "Linkedin":
-                analysis_lk(result[4], result[0], conn)
-            elif result[8] == "Pole-Emploi":
-                analysis_pe(result[4], result[0], conn)
+            print(result)
+            if result[2] == "Linkedin":
+                analysis_lk(result[1], result[0], conn)
+            elif result[2] == "Pole-Emploi":
+                analysis_pe(result[1], result[0], conn)
         db.db_close(conn)
         scrape.data_status()
 

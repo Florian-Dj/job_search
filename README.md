@@ -12,7 +12,7 @@ Application Web permettant d'avoir' les dernières offres d'emplois.
 ```
 dnf install vim python3.8 git screen firewalld
 git clone https://github.com/Florian-Dj/job_search.git
-cd jobs_search
+cd job_search
 python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
