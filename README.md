@@ -33,7 +33,7 @@ firewall-cmd --reload
 ## Crontab
 ```
 */15 * * * * cd /home/projet/job_search/scripts && ../env/bin/python3 scrape.py
-*/25 * * * * cd /home/projet/job_search/scripts && ../env/bin/python3 analysis.py
+05 */1 * * * cd /home/projet/job_search/scripts && ../env/bin/python3 analysis.py
 ```
 
 ## Utilisation
