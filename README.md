@@ -1,5 +1,5 @@
 # Recherche d'emploi
-Application Web permettant d'avoir' les dernières offres d'emplois.
+Application Web permettant d'avoir les dernières offres d'emplois *Linkedin / Pôle-Emploi*.
 
 ## Exigence
 - Python >= 3.8
@@ -19,7 +19,7 @@ source env/bin/activate
 pip install -r requirements.txt
 chmod ug+x run.sh
 ```
-Il faut ajouter l'Ip de votre machine dans les options de django
+Ajouter l'Ip ou DNS de votre machine dans les options de Django
 ```
 vim /home/projet/job_search/admin/settings.py
 ALLOWED_HOSTS = ['Your-IP']
@@ -81,4 +81,4 @@ V0.3
     - Pourcentages des stats
 - Filtre par Villes/Régions
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
-- Log backup et crontab
+- Logs *(backup et crontab)*
