@@ -17,16 +17,16 @@ def select_search():
 
 
 def parse(result):
-    if result[1] == "Pole-Emploi":
+    if result[3] == "Pole-Emploi":
         ep(result)
-    elif result[1] == "Linkedin":
+    elif result[3] == "Linkedin":
         lk(result)
     else:
         print("Error - {}".format(result))
 
 
 def ep(result):
-    req = requests.get(result[3])
+    req = requests.get(result[2])
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="result")
     conn = db.db_connection()
@@ -40,7 +40,7 @@ def ep(result):
 
 
 def lk(result):
-    req = requests.get(result[3])
+    req = requests.get(result[2])
     soup = BeautifulSoup(req.content, "html.parser")
     ads = soup.find_all('li', class_="result-card")
     conn = db.db_connection()
