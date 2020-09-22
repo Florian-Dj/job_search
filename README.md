@@ -49,7 +49,10 @@ Vous pouvez lancer votre navigateur web avec l'url ip:8000
 Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root.
 
 ## Mise à jour
-**V0.4**
+**V0.4.1**
+- Optimisation analyse des annonces
+
+V0.4
 - Suppression des offres Leboncoin
 - Identifier les annonces expirées *(niveau 1)*
 - Refonte des statistiques
@@ -72,7 +75,7 @@ V0.3
 
 ## Idées
 - Ajouter d'autres site de recherche
-- Faire un fichier d'options pour les mot clef inadéquate
+- Faire un fichier d'options pour les mots clef inadéquate
 - Formulaire de contact
 - Stocker toute la description de l'annonce
 - Ajouter une date pour les annonces *(ajout et mise à jour)*

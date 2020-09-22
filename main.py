@@ -12,6 +12,6 @@ def check_db():
 
 if __name__ == '__main__':
     check_db()
-    print("Search Jobs V0.4")
+    print("Search Jobs V0.4.1")
     print("By Mucral")
     os.system('python manage.py runserver 80')
