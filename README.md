@@ -51,6 +51,7 @@ Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root
 ## Mise à jour
 **V0.4.1**
 - Optimisation analyse des annonces
+- Ajoute de statistiques sur lap age d'accueil
 
 V0.4
 - Suppression des offres Leboncoin
@@ -79,7 +80,6 @@ V0.3
 - Formulaire de contact
 - Stocker toute la description de l'annonce
 - Ajouter une date pour les annonces *(ajout et mise à jour)*
-- Ajouter plus de statistiques
     - Par villes
     - Pourcentages des stats
 - Filtre par Villes/Régions
