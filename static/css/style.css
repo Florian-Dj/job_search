@@ -59,13 +59,14 @@ section {
 
 div.title{
   margin: auto;
-  width: 83%;
+  width: 89%;
   display: flex;
   justify-content: space-between;
 }
 
-div.title h3{
-    margin: 0;
+
+div.title span{
+    margin-top: 20px;
 }
 
 a.button {
