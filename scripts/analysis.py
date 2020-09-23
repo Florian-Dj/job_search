@@ -19,7 +19,6 @@ def select_ads():
             elif result[2] == "Pole-Emploi":
                 analysis_pe(result[1], result[0])
         update_sql()
-        scrape.data_status()
 
 
 def analysis_lk(url, id_ad):
