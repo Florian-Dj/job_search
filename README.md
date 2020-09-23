@@ -34,6 +34,7 @@ firewall-cmd --reload
 ```
 */15 * * * * cd /home/projet/job_search/scripts && ../env/bin/python3 scrape.py
 05 */1 * * * cd /home/projet/job_search/scripts && ../env/bin/python3 analysis.py
+*/5 * * * * cd /home/projet/job_search/scripts && ../env/bin/python3 stats.py
 ```
 
 ## Utilisation
@@ -49,7 +50,10 @@ Vous pouvez lancer votre navigateur web avec l'url ip:8000
 Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root.
 
 ## Mise à jour
-**V0.4.1**
+**V0.5**
+- Ajout d'un fichier pour stats
+
+V0.4.1
 - Optimisation analyse des annonces
 - Ajoute statistiques sur la page d'accueil
 
