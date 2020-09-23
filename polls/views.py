@@ -55,3 +55,7 @@ def ad(request):
         'site': site,
     }
     return render(request, 'ad.html', context)
+
+
+def contact(request):
+    return render(request, 'contact.html')
