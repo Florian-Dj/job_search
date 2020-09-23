@@ -150,8 +150,9 @@ table td, table th {
   text-align: center;
 }
 
-table i{
+table span{
     font-size: 12px;
+    font-style: italic;
 }
 
 

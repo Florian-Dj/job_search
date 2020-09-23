@@ -51,7 +51,7 @@ Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root
 ## Mise à jour
 **V0.4.1**
 - Optimisation analyse des annonces
-- Ajoute de statistiques sur lap age d'accueil
+- Ajoute statistiques sur la page d'accueil
 
 V0.4
 - Suppression des offres Leboncoin

@@ -26,22 +26,22 @@
                 {% for stat in all_stat %}
                     <tr>
                         <th>{{ stat.web }}</th>
-                        <td>{{ stat.not_read }} <i>({{ stat.p_notread }}%)</i></td>
-                        <td>{{ stat.inadequate }} <i>({{ stat.p_inadequate }}%)</i></td>
-                        <td>{{ stat.expired }} <i>({{ stat.p_expired }}%)</i></td>
-                        <td>{{ stat.applied }} <i>({{ stat.p_applied }}%)</i></td>
-                        <td>{{ stat.other }} <i>({{ stat.p_other }}%)</i></td>
+                        <td>{{ stat.not_read }} <span>({{ stat.p_notread }}%)</span></td>
+                        <td>{{ stat.inadequate }} <span>({{ stat.p_inadequate }}%)</span></td>
+                        <td>{{ stat.expired }} <span>({{ stat.p_expired }}%)</span></td>
+                        <td>{{ stat.applied }} <span>({{ stat.p_applied }}%)</span></td>
+                        <td>{{ stat.other }} <span>({{ stat.p_other }}%)</span></td>
                         <td>{{ stat.total }}</td>
                     </tr>
                 {% endfor %}
                 <tr>
                     <th>Total</th>
                     {% if all_stat %}
-                        <td>{{ total_stat.t_not_read }} <i>({{ total_stat.pt_not_read }}%)</i></td>
-                        <td>{{ total_stat.t_inadequate }} <i>({{ total_stat.pt_inadequate }}%)</i></td>
-                        <td>{{ total_stat.t_expired }} <i>({{ total_stat.pt_expired }}%)</i></td>
-                        <td>{{ total_stat.t_applied }} <i>({{ total_stat.pt_applied }}%)</i></td>
-                        <td>{{ total_stat.t_other }} <i>({{ total_stat.pt_other }}%)</i></td>
+                        <td>{{ total_stat.t_not_read }} <span>({{ total_stat.pt_not_read }}%)</span></td>
+                        <td>{{ total_stat.t_inadequate }} <span>({{ total_stat.pt_inadequate }}%)</span></td>
+                        <td>{{ total_stat.t_expired }} <span>({{ total_stat.pt_expired }}%)</span></td>
+                        <td>{{ total_stat.t_applied }} <span>({{ total_stat.pt_applied }}%)</span></td>
+                        <td>{{ total_stat.t_other }} <span>({{ total_stat.pt_other }}%)</span></td>
                         <td>{{ total_stat.t_total }}</td>
                     {% else %}
                         <td>0</td>
