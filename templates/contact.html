@@ -4,5 +4,10 @@
 
 {% block body %}
 
+<form action="/your-name/" method="post">
+    <label for="your_name">Nom / Entreprise: </label>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <input type="submit" value="Envoyer">
+</form>
 
 {% endblock %}

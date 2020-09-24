@@ -3,12 +3,15 @@
 import requests
 from bs4 import BeautifulSoup
 import database as db
+import logs
 
 title_word = ["stagiaire", "freelance", "stage", "alternance"]
 description = ""
+logging = logs.log_conf()
 
 
 def select_search():
+    logging.info("Run script python")
     sql = """SELECT * FROM polls_search"""
     results = db.db_select(sql)
     if results:
@@ -22,7 +25,7 @@ def parse(result):
     elif result[3] == "Linkedin":
         lk(result)
     else:
-        print("Error - {}".format(result))
+        logging.warning("Scrape parse {}".format(result))
 
 
 def ep(result):
