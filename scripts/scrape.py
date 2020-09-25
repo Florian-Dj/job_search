@@ -3,11 +3,11 @@
 import requests
 from bs4 import BeautifulSoup
 import database as db
-import logs
+import log
 
 title_word = ["stagiaire", "freelance", "stage", "alternance"]
 description = ""
-logging = logs.log_conf()
+logging = log.log_sql()
 
 
 def select_search():

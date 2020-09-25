@@ -2,6 +2,9 @@
 
 import sqlite3
 from sqlite3 import Error
+import log
+
+logging = log.log_sql()
 
 
 def injection_sql(conn, sql):

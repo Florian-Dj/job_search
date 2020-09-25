@@ -3,13 +3,14 @@
 import requests
 from bs4 import BeautifulSoup
 import scrape, database as db
-import logging
+import log
 
 list_id_expired = []
+logging = log.log_sql()
 
 
 def select_ads():
-    logging.info("Run analysis")
+    logging.info("Run script python")
     sql = """SELECT polls_ad.id, polls_ad.link, polls_search.web  FROM polls_ad
         LEFT JOIN polls_search ON polls_ad.site_id = polls_search.id
         WHERE status='not-read'"""

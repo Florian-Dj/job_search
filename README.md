@@ -51,7 +51,7 @@ Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root
 
 ## Mise à jour
 **V0.5**
-- Ajout d'un fichier pour stats
+- Possibiliter de refresh les stats
 
 V0.4.1
 - Optimisation analyse des annonces
@@ -89,3 +89,4 @@ V0.3
 - Filtre par Villes/Régions
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
 - Logs *(backup et crontab)*
+- Disponible sous Docker
