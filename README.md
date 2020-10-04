@@ -90,3 +90,5 @@ V0.3
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
 - Logs *(backup et crontab)*
 - Disponible sous Docker
+- Page CV
+- Page pour chaque annonce
