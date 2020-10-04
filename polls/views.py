@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from .models import Search, Ad, Stat
 from django.db.models import Sum, F
+from django.http import HttpResponseRedirect
+from django.core.mail import send_mail
+
+from .forms import ContactForm
 
 
 def index(request):
@@ -58,4 +62,19 @@ def ad(request):
 
 
 def contact(request):
-    return render(request, 'contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            auth_user = form.cleaned_data['name']
+            from_email = form.cleaned_data['sender']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            sender = "{} <{}>".format(auth_user, from_email)
+
+            recipients = ['floriandjerbi@gmail.com']
+
+            send_mail(subject, message, sender, recipients)
+            return HttpResponseRedirect('/contact')
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})

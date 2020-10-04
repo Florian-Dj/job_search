@@ -4,10 +4,11 @@
 
 {% block body %}
 
-<form action="/your-name/" method="post">
-    <label for="your_name">Nom / Entreprise: </label>
-    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+<form action="/contact" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
     <input type="submit" value="Envoyer">
 </form>
+
 
 {% endblock %}
