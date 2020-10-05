@@ -8,7 +8,7 @@ from .forms import ContactForm
 
 
 def index(request):
-    all_stat = Stat.objects.order_by('web').annotate(
+    all_stat = Stat.objects.order_by("web").annotate(
         p_notread=Sum(F('not_read') * 100 / F('total')),
         p_applied=Sum(F('applied') * 100 / F('total')),
         p_inadequate=Sum(F('inadequate') * 100 / F('total')),
