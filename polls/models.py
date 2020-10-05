@@ -24,7 +24,7 @@ class Ad(models.Model):
 
 class Stat(models.Model):
     objects = None
-    web = models.CharField("Site", max_length=255, unique=True)
+    web = models.ForeignKey(Search, on_delete=models.CASCADE)
     not_read = models.IntegerField("Non lue", default=0)
     applied = models.IntegerField("Postulé", default=0)
     inadequate = models.IntegerField("Inadéquate", default=0)

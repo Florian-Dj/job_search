@@ -11,8 +11,7 @@ def data_status():
         list_web[result[0]] = {"not-read": 0, "applied": 0, "inadequate": 0, "expired": 0, "other": 0}
     sql = """SELECT polls_search.id, status, COUNT(status) FROM polls_ad
         LEFT JOIN polls_search ON polls_ad.site_id = polls_search.id
-        GROUP BY polls_search.id, status
-        ORDER BY polls_search.id, status"""
+        GROUP BY polls_search.id, status"""
     results = db.db_select(sql)
     for result in results:
         list_web[result[0]][result[1]] = result[2]
