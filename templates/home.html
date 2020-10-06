@@ -5,15 +5,17 @@
 {% block body %}
 
 <div class="title">
-    <h3> Statistiques Annonces</h3>
+    <h3> Statistiques Sites</h3>
 </div>
+<p>{{ all_stat_site.values }}</p>
+
 
 <div class="wrap-table100">
     <div class="table100">
         <table>
             <thead>
                 <tr>
-                    <th>Web</th>
+                    <th>Site</th>
                     <th>Non-lu</th>
                     <th>Inadéquate</th>
                     <th>Expiré</th>
@@ -23,9 +25,9 @@
                 </tr>
             </thead>
             <tbody>
-                {% for stat in all_stat %}
+                {% for stat in all_stat_site %}
                     <tr>
-                        <th><img src="static/image/{{ stat.web.web }}.png" alt="{{ ad.site.web }}"/>{{ stat.web.subject }}</th>
+                        <th>{{ stat.web.subject }}</th>
                         <td>{{ stat.not_read }} <span>({{ stat.p_notread }}%)</span></td>
                         <td>{{ stat.inadequate }} <span>({{ stat.p_inadequate }}%)</span></td>
                         <td>{{ stat.expired }} <span>({{ stat.p_expired }}%)</span></td>
@@ -36,7 +38,7 @@
                 {% endfor %}
                 <tr>
                     <th>Total</th>
-                    {% if all_stat %}
+                    {% if all_stat_search %}
                         <td>{{ total_stat.t_not_read }} <span>({{ total_stat.pt_not_read }}%)</span></td>
                         <td>{{ total_stat.t_inadequate }} <span>({{ total_stat.pt_inadequate }}%)</span></td>
                         <td>{{ total_stat.t_expired }} <span>({{ total_stat.pt_expired }}%)</span></td>
@@ -44,6 +46,64 @@
                         <td>{{ total_stat.t_other }} <span>({{ total_stat.pt_other }}%)</span></td>
                         <td>{{ total_stat.t_total }}</td>
                     {% else %}
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    {% endif %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="title">
+    <h3> Statistiques Annonces</h3>
+</div>
+
+<div class="wrap-table100">
+    <div class="table100">
+        <table>
+            <thead>
+                <tr>
+                    <th>Site</th>
+                    <th>Sujet</th>
+                    <th>Non-lu</th>
+                    <th>Inadéquate</th>
+                    <th>Expiré</th>
+                    <th>Postulé</th>
+                    <th>Autres</th>
+                   <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stat in all_stat_search %}
+                    <tr>
+                        <th><img src="static/image/{{ stat.web.web }}.png" alt="{{ ad.site.web }}"/></th>
+                        <th>{{ stat.web.subject }}</th>
+                        <td>{{ stat.not_read }} <span>({{ stat.p_notread }}%)</span></td>
+                        <td>{{ stat.inadequate }} <span>({{ stat.p_inadequate }}%)</span></td>
+                        <td>{{ stat.expired }} <span>({{ stat.p_expired }}%)</span></td>
+                        <td>{{ stat.applied }} <span>({{ stat.p_applied }}%)</span></td>
+                        <td>{{ stat.other }} <span>({{ stat.p_other }}%)</span></td>
+                        <td>{{ stat.total }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <th>Total</th>
+                    {% if all_stat_search %}
+                        <td></td>
+                        <td>{{ total_stat.t_not_read }} <span>({{ total_stat.pt_not_read }}%)</span></td>
+                        <td>{{ total_stat.t_inadequate }} <span>({{ total_stat.pt_inadequate }}%)</span></td>
+                        <td>{{ total_stat.t_expired }} <span>({{ total_stat.pt_expired }}%)</span></td>
+                        <td>{{ total_stat.t_applied }} <span>({{ total_stat.pt_applied }}%)</span></td>
+                        <td>{{ total_stat.t_other }} <span>({{ total_stat.pt_other }}%)</span></td>
+                        <td>{{ total_stat.t_total }}</td>
+                    {% else %}
+                        <td></td>
                         <td>0</td>
                         <td>0</td>
                         <td>0</td>

@@ -8,14 +8,15 @@ from .forms import ContactForm
 
 
 def index(request):
-    all_stat = Stat.objects.order_by("web").annotate(
+    all_stat_search = Stat.objects.order_by("web").annotate(
         p_notread=Sum(F('not_read') * 100 / F('total')),
         p_applied=Sum(F('applied') * 100 / F('total')),
         p_inadequate=Sum(F('inadequate') * 100 / F('total')),
         p_expired=Sum(F('expired') * 100 / F('total')),
         p_other=Sum(F('other') * 100 / F('total'))
     )
-    total_stat = all_stat.aggregate(
+
+    total_stat = all_stat_search.aggregate(
         t_not_read=Sum('not_read'),
         t_applied=Sum('applied'),
         t_inadequate=Sum('inadequate'),
@@ -27,8 +28,12 @@ def index(request):
         pt_inadequate=Sum('inadequate') * 100 / Sum('total'),
         pt_expired=Sum('expired') * 100 / Sum('total'),
         pt_other=Sum('other') * 100 / Sum('total'))
+
+    all_stat_site = Stat.objects.filter(web__web="Linkedin")
+
     context = {
-        'all_stat': all_stat,
+        'all_stat_search': all_stat_search,
+        'all_stat_site': all_stat_site,
         'total_stat': total_stat,
     }
     return render(request, 'home.html', context)

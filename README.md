@@ -52,17 +52,18 @@ Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root
 ## Mise à jour
 **V0.5**
 - Possibiliter de refresh les stats
+- Nouvelles stats suivant les recherches
 
 V0.4.1
 - Optimisation analyse des annonces
-- Ajoute statistiques sur la page d'accueil
+- Ajoute pourcentage statistiques sur la page d'accueil
 
 V0.4
 - Suppression des offres Leboncoin
 - Identifier les annonces expirées *(niveau 1)*
 - Refonte des statistiques
-- Annonces en inadéquate suivant des mots clefs dans une liste
-- Limite de 100 annonces sur la page
+- Annonces en autre suivant des mots clefs dans une liste
+- Limite de 100 sur la page annonces
 - Ajout un Footer
 - Refaire le CSS *(agrandir la page, fixer la navbar)*
 
@@ -84,11 +85,10 @@ V0.3
 - Formulaire de contact
 - Stocker toute la description de l'annonce
 - Ajouter une date pour les annonces *(ajout et mise à jour)*
-    - Par villes
-    - Pourcentages des stats
 - Filtre par Villes/Régions
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
 - Logs *(backup et crontab)*
 - Disponible sous Docker
 - Page CV
 - Page pour chaque annonce
+- Refonte des tableaux
