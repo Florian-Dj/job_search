@@ -6,11 +6,9 @@ import scrape, database as db
 import log
 
 list_id_expired = []
-logging = log.log_sql()
 
 
 def select_ads():
-    logging.info("Run script python")
     sql = """SELECT polls_ad.id, polls_ad.link, polls_search.web  FROM polls_ad
         LEFT JOIN polls_search ON polls_ad.site_id = polls_search.id
         WHERE status='not-read'"""
@@ -49,4 +47,7 @@ def update_sql():
 
 
 if __name__ == '__main__':
+    logging = log.log_sql()
+    logging.info("Run script analysis")
     select_ads()
+    logging.info("Finish script analysis")

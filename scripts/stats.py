@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import database as db
+import log
 
 
 def data_status():
@@ -31,4 +32,7 @@ def data_status():
 
 
 if __name__ == '__main__':
+    logging = log.log_sql()
+    logging.info("Run script stats")
     data_status()
+    logging.info("Finish script stats")

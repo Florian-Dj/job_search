@@ -5,7 +5,7 @@ import logging
 
 def log_sql():
     logging.basicConfig(
-        filename='../logs/jobs_sql.log',
+        filename='../logs/jobs_cron.log',
         level=logging.INFO,
         format='%(name)s %(asctime)s %(levelname)s %(pathname)s %(message)s',
         datefmt='%m/%d/%y %X'
@@ -16,7 +16,7 @@ def log_sql():
 def log_ads():
     logging.basicConfig(
         filename='../logs/jobs_ads.log',
-        level=logging.INFO,
+        level=logging.ERROR,
         format='%(name)s %(asctime)s %(levelname)s %(pathname)s %(message)s',
         datefmt='%m/%d/%y %X'
     )

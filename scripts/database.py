@@ -14,7 +14,7 @@ def injection_sql(conn, sql):
     except conn.IntegrityError:
         return "update"
     except conn.Error as e:
-        print(e)
+        logging.error(e)
 
 
 def db_connection():
@@ -24,7 +24,7 @@ def db_connection():
         conn.execute('PRAGMA foreign_keys = 1')
         return conn
     except Error as e:
-        print(e)
+        logging.error(e)
     return conn
 
 
@@ -33,7 +33,7 @@ def db_close(conn):
         conn.commit()
         conn.close()
     except conn.Error as e:
-        print(e)
+        logging.error(e)
 
 
 def db_select(sql):
@@ -44,4 +44,4 @@ def db_select(sql):
         result = c.fetchall()
         return result
     except Error as e:
-        print(e)
+        logging.error(e)

@@ -7,11 +7,9 @@ import log
 
 title_word = ["stagiaire", "freelance", "stage", "alternance"]
 description = ""
-logging = log.log_sql()
 
 
 def select_search():
-    logging.info("Run script python")
     sql = """SELECT * FROM polls_search"""
     results = db.db_select(sql)
     if results:
@@ -66,4 +64,7 @@ def check_status(site_id, title, location, link, description, conn):
 
 
 if __name__ == '__main__':
+    logging = log.log_sql()
+    logging.info("Run script scrape")
     select_search()
+    logging.info("Finish script scrape")

@@ -25,7 +25,7 @@
             <tbody>
                 {% for stat in all_stat_site %}
                     <tr>
-                        <th>{{ stat.web__web }}</th>
+                        <th><img src="static/image/{{ stat.web__web }}.png" alt="{{ stat.web__web }}" title="{{ stat.web__web }}"/></th>
                         <td>{{ stat.not_read__sum }} <span>({{ stat.pt_not_read }}%)</span></td>
                         <td>{{ stat.inadequate__sum }} <span>({{ stat.pt_inadequate }}%)</span></td>
                         <td>{{ stat.expired__sum }} <span>({{ stat.pt_expired }}%)</span></td>
