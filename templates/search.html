@@ -25,7 +25,7 @@
             <tbody>
 {% for search in search_list %}
                 <tr id="{{search.id}}">
-                    <th class="site">{{ search.web }}</th>
+                    <th class="site"><img src="static/image/{{ search.web }}.png" alt="{{ search.web }}" title="{{ search.web }}"/></th>
                     <td><a href="{{search.link_search}}" target="_blank">{{ search.subject }}</a></td>
                     <td class="search">
                         <a href="adminpolls/search/{{search.id}}/change/" target="_blank"><i class="fas fa-pen" title="Modifier"></i></a>

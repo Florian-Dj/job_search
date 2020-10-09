@@ -80,7 +80,7 @@
             <tbody>
                 {% for stat in all_stat_search %}
                     <tr>
-                        <th><img src="static/image/{{ stat.web.web }}.png" alt="{{ ad.site.web }}"/></th>
+                        <th><img src="static/image/{{ stat.web.web }}.png" alt="{{ ad.site.web }}" title="{{ stat.web.web }}"/></th>
                         <th>{{ stat.web.subject }}</th>
                         <td>{{ stat.not_read }} <span>({{ stat.p_notread }}%)</span></td>
                         <td>{{ stat.inadequate }} <span>({{ stat.p_inadequate }}%)</span></td>
@@ -91,9 +91,8 @@
                     </tr>
                 {% endfor %}
                 <tr>
-                    <th>Total</th>
+                    <th colspan=2>Total</th>
                     {% if all_stat_search %}
-                        <td></td>
                         <td>{{ total_stat.t_not_read }} <span>({{ total_stat.pt_not_read }}%)</span></td>
                         <td>{{ total_stat.t_inadequate }} <span>({{ total_stat.pt_inadequate }}%)</span></td>
                         <td>{{ total_stat.t_expired }} <span>({{ total_stat.pt_expired }}%)</span></td>

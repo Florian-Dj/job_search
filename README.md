@@ -52,7 +52,7 @@ Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root
 ## Mise à jour
 **V0.5**
 - Possibiliter de refresh les stats
-- Nouvelles stats suivant les recherches
+- Statistique suivant les recherches
 
 V0.4.1
 - Optimisation analyse des annonces
