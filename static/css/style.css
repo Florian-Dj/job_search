@@ -99,13 +99,14 @@ table {
   margin: 0 auto;
   position: relative;
   margin-bottom: 75px;
+  z-index: 0;
 }
 
 table thead{
     position: -webkit-sticky;
     position: sticky;
     top: 60px;
-    z-index: 2;
+    z-index: 1;
 }
 
 table * {position: relative;}
