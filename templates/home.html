@@ -7,8 +7,6 @@
 <div class="title">
     <h3> Statistiques Sites</h3>
 </div>
-<p>{{ all_stat_site.values }}</p>
-
 
 <div class="wrap-table100">
     <div class="table100">
@@ -27,13 +25,13 @@
             <tbody>
                 {% for stat in all_stat_site %}
                     <tr>
-                        <th>{{ stat.web.subject }}</th>
-                        <td>{{ stat.not_read }} <span>({{ stat.p_notread }}%)</span></td>
-                        <td>{{ stat.inadequate }} <span>({{ stat.p_inadequate }}%)</span></td>
-                        <td>{{ stat.expired }} <span>({{ stat.p_expired }}%)</span></td>
-                        <td>{{ stat.applied }} <span>({{ stat.p_applied }}%)</span></td>
-                        <td>{{ stat.other }} <span>({{ stat.p_other }}%)</span></td>
-                        <td>{{ stat.total }}</td>
+                        <th>{{ stat.web__web }}</th>
+                        <td>{{ stat.not_read__sum }} <span>({{ stat.pt_not_read }}%)</span></td>
+                        <td>{{ stat.inadequate__sum }} <span>({{ stat.pt_inadequate }}%)</span></td>
+                        <td>{{ stat.expired__sum }} <span>({{ stat.pt_expired }}%)</span></td>
+                        <td>{{ stat.applied__sum }} <span>({{ stat.pt_applied }}%)</span></td>
+                        <td>{{ stat.other__sum }} <span>({{ stat.pt_other }}%)</span></td>
+                        <td>{{ stat.total__sum }}</td>
                     </tr>
                 {% endfor %}
                 <tr>

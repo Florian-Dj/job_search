@@ -29,7 +29,19 @@ def index(request):
         pt_expired=Sum('expired') * 100 / Sum('total'),
         pt_other=Sum('other') * 100 / Sum('total'))
 
-    all_stat_site = Stat.objects.filter(web__web="Linkedin")
+    all_stat_site = Stat.objects.values('web__web').annotate(
+        Sum('not_read'),
+        Sum('applied'),
+        Sum('inadequate'),
+        Sum('expired'),
+        Sum('other'),
+        Sum('total'),
+        pt_not_read=Sum('not_read') * 100 / Sum('total'),
+        pt_applied=Sum('applied') * 100 / Sum('total'),
+        pt_inadequate=Sum('inadequate') * 100 / Sum('total'),
+        pt_expired=Sum('expired') * 100 / Sum('total'),
+        pt_other=Sum('other') * 100 / Sum('total')
+    )
 
     context = {
         'all_stat_search': all_stat_search,
