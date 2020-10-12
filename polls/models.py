@@ -34,3 +34,11 @@ class Stat(models.Model):
     expired = models.IntegerField("Expiré", default=0)
     other = models.IntegerField("Autres", default=0)
     total = models.IntegerField("Total", default=0)
+
+
+class Mail(models.Model):
+    object = None
+    name = models.CharField("Nom Entreprise", null=True, blank=True, max_length=255)
+    email = models.CharField(max_length=255)
+    subject = models.CharField(max_length=255)
+    message = models.TextField()

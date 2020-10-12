@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Search, Ad, Stat
+from .models import Search, Ad, Stat, Mail
 from django.db.models import Sum, F
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
@@ -87,7 +87,7 @@ def contact(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             # recipients = ['floriandjerbi@gmail.com']
-            print(auth_user, from_email, subject, message)
+            Mail(name=auth_user, email=from_email, subject=subject, message=message).save()
             return HttpResponseRedirect('/contact')
     else:
         form = ContactForm()

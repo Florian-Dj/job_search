@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Search, Ad, Stat
+from .models import Search, Ad, Stat, Mail
 
 
 class AdFields(admin.ModelAdmin):
@@ -18,8 +18,13 @@ class StatFields(admin.ModelAdmin):
     readonly_fields = ("web", "not_read", "applied", "inadequate", "expired", "other", "total")
 
 
+class MailFields(admin.ModelAdmin):
+    list_display = ("name", "email", "subject", "message")
+
+
 admin.site.register(Search, SearchFields)
 admin.site.register(Ad, AdFields)
 admin.site.register(Stat, StatFields)
+admin.site.register(Mail, MailFields)
 
 admin.site.site_header = "Pannel Admin Django"

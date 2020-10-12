@@ -54,6 +54,8 @@ Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root
 - Possibiliter de refresh les stats
 - Statistique suivant les recherches
 - Logs *(sql_error et scripts)*
+- Formulaire de contact
+- Lecture des mails via panel admin
 
 V0.4.1
 - Optimisation analyse des annonces
@@ -81,7 +83,6 @@ V0.3
 - Changer les status des annonces sur la page admin
 
 ## Idées
-- Formulaire de contact
 - DEBUG False
 - Refonte des tableaux
 - Stocker toute la description de l'annonce
