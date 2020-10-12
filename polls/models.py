@@ -11,6 +11,9 @@ class Search(models.Model):
     subject = models.CharField("Sujet", max_length=255, help_text="Nom du Post")
     link_search = models.CharField("Lien", max_length=255, unique=True)
 
+    def __str__(self):
+        return self.web
+
 
 class Ad(models.Model):
     objects = None
