@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="fr">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="icon" href="../static/image/logo.ico" />
+    <link rel="icon" href="{% static 'image/logo.ico' %}" />
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <body>

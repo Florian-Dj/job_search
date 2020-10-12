@@ -7,4 +7,4 @@ then
         python3 manage.py createsuperuser
 fi
 
-source env/bin/activate && screen -dmS django-jobs python manage.py runserver 0:8000
+source env/bin/activate && screen -dmS django-jobs python manage.py runserver  --insecure 0:8000
