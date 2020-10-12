@@ -14,4 +14,4 @@ if __name__ == '__main__':
     check_db()
     print("Search Jobs V0.5")
     print("By Mucral")
-    os.system('python manage.py runserver  --insecure 80')
+    os.system('python manage.py runserver --insecure 80')
