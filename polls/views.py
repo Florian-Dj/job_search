@@ -86,11 +86,8 @@ def contact(request):
             from_email = form.cleaned_data['sender']
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
-            sender = "{} <{}>".format(auth_user, from_email)
-
-            recipients = ['floriandjerbi@gmail.com']
-
-            send_mail(subject, message, sender, recipients)
+            # recipients = ['floriandjerbi@gmail.com']
+            print(auth_user, from_email, subject, message)
             return HttpResponseRedirect('/contact')
     else:
         form = ContactForm()
