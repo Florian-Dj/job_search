@@ -53,6 +53,7 @@ Je vous conseille d'en refaire un plus sécuriser et de supprimer le ocmpte root
 **V0.5**
 - Possibiliter de refresh les stats
 - Statistique suivant les recherches
+- Logs *(sql_error et scripts)*
 
 V0.4.1
 - Optimisation analyse des annonces
@@ -87,7 +88,6 @@ V0.3
 - Ajouter une date pour les annonces *(ajout et mise à jour)*
 - Filtre par Villes/Régions
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
-- Logs *(backup et crontab)*
 - Disponible sous Docker
 - Page CV
 - Page pour chaque annonce
