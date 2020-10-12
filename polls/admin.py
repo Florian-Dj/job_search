@@ -16,6 +16,7 @@ class SearchFields(admin.ModelAdmin):
 class StatFields(admin.ModelAdmin):
     list_display = ("web", "not_read", "applied", "inadequate", "expired", "other", "total")
     readonly_fields = ("web", "not_read", "applied", "inadequate", "expired", "other", "total")
+    list_filter = ('web__web', "web__subject")
 
 
 class MailFields(admin.ModelAdmin):
