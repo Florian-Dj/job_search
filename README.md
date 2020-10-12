@@ -81,15 +81,15 @@ V0.3
 - Changer les status des annonces sur la page admin
 
 ## Idées
-- Ajouter d'autres site de recherche
-- Faire un fichier d'options pour les mots clef inadéquate
 - Formulaire de contact
+- DEBUG False
+- Refonte des tableaux
 - Stocker toute la description de l'annonce
+- Ajouter d'autres site de recherche
+- Page CV
+- Faire un fichier d'options pour les mots clef inadéquate
+- Page pour chaque annonce
 - Ajouter une date pour les annonces *(ajout et mise à jour)*
 - Filtre par Villes/Régions
 - Savoir si l'annonce est relancée *(redondante pour negocier le salaire)*
 - Disponible sous Docker
-- Page CV
-- Page pour chaque annonce
-- Refonte des tableaux
-- DEBUG False

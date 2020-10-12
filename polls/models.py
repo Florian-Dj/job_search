@@ -12,7 +12,7 @@ class Search(models.Model):
     link_search = models.CharField("Lien", max_length=255, unique=True)
 
     def __str__(self):
-        return self.web
+        return "{} - {}".format(self.web, self.subject)
 
 
 class Ad(models.Model):
