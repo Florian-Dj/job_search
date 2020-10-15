@@ -49,7 +49,7 @@
                     </td>
                     <td>
                         {% load static %}
-                        <img src="{% static 'image/{{ ad.site.web }}.png' %}" alt="{{ ad.site.web }}" title="{{ ad.site.web }} - {{ ad.site.subject }}"/>
+                        <img src="static/image/{{ ad.site.web }}.png" alt="{{ ad.site.web }}" title="{{ ad.site.web }} - {{ ad.site.subject }}"/>
                     </td>
                     <td class="title">
                         <a href="{{ad.link}}" target="_blank"><b>{{ ad.title }}</b></a>
