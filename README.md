@@ -9,7 +9,7 @@ Application Web permettant d'avoir les dernières offres d'emplois *Linkedin / P
 
 ## Installation
 
-###Linux
+###CentOs
 ```
 dnf install vim python3.8 git screen firewalld
 git clone https://github.com/Florian-Dj/job_search.git
@@ -21,7 +21,7 @@ chmod ug+x run.sh
 ```
 Ajouter l'Ip ou DNS de votre machine dans les options de Django
 ```
-vim /home/projet/job_search/admin/settings.py
+vim /chemin/projet/job_search/admin/settings.py
 ALLOWED_HOSTS = ['Your-IP']
 ```
 Si vous avez installé firewalld
@@ -32,14 +32,14 @@ firewall-cmd --reload
 
 ## Crontab
 ```
-*/15 * * * * cd /home/projet/job_search/scripts && ../env/bin/python3 scrape.py
-05 */1 * * * cd /home/projet/job_search/scripts && ../env/bin/python3 analysis.py
-*/5 * * * * cd /home/projet/job_search/scripts && ../env/bin/python3 stats.py
+*/15 * * * * cd /chemin/projet/job_search/scripts && ../env/bin/python3 scrape.py
+05 */1 * * * cd /chemin/projet/job_search/scripts && ../env/bin/python3 analysis.py
+*/5 * * * * cd /chemin/projet/job_search/scripts && ../env/bin/python3 stats.py
 ```
 
 ## Utilisation
 ```
-cd /home/projet/job_search
+cd /chemin/projet/job_search
 sh run.sh
 ```
 
