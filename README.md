@@ -15,8 +15,10 @@ dnf install vim python3.8 git screen firewalld
 git clone https://github.com/Florian-Dj/job_search.git
 cd job_search
 python3 -m venv env
+mkdir -p /var/www/django_job-search
 source env/bin/activate
 pip install -r requirements.txt
+python3 manage.py collectstatic
 chmod ug+x run.sh
 ```
 Ajouter l'Ip ou DNS de votre machine dans les options de Django
