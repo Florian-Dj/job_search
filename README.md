@@ -8,8 +8,7 @@ Application Web permettant d'avoir les dernières offres d'emplois *Linkedin / P
     - Django == 3.1
 
 ## Installation
-
-###CentOs
+### CentOs
 ```
 dnf install vim python3.8 git screen firewalld
 git clone https://github.com/Florian-Dj/job_search.git
