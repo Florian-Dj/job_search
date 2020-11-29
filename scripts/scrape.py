@@ -2,8 +2,8 @@
 
 import requests
 from bs4 import BeautifulSoup
-import database as db
-import log
+import scripts.database as db
+from scripts import log
 
 title_word = ["stagiaire", "freelance", "stage", "alternance"]
 description = ""

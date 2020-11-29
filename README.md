@@ -23,7 +23,7 @@ chmod ug+x run.sh
 Ajouter l'Ip ou DNS de votre machine dans les options de Django
 ```
 vim /chemin/projet/job_search/admin/settings.py
-ALLOWED_HOSTS = ['Your-IP']
+ALLOWED_HOSTS = ['IP ou DNS']
 ```
 Si vous avez installé firewalld
 ```
