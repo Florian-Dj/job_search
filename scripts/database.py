@@ -2,7 +2,7 @@
 
 import sqlite3
 from sqlite3 import Error
-from scripts import log
+import log
 
 logging = log.log_sql()
 

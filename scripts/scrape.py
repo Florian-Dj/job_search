@@ -3,7 +3,7 @@
 import requests
 from bs4 import BeautifulSoup
 import scripts.database as db
-from scripts import log
+import log
 
 title_word = ["stagiaire", "freelance", "stage", "alternance"]
 description = ""

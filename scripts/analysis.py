@@ -2,8 +2,8 @@
 
 import requests
 from bs4 import BeautifulSoup
-from scripts import database as db
-from scripts import log
+import database as db
+import log
 
 list_id_expired = []
 

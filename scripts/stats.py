@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from scripts import database as db
-from scripts import log
+import database as db
+import log
 
 
 def data_status():
